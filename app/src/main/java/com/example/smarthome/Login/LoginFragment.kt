@@ -1,4 +1,4 @@
-package com.example.smarthome
+package com.example.smarthome.Login
 
 
 import android.os.Bundle
@@ -7,27 +7,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.findNavController
+
+import com.example.smarthome.R
+import com.example.smarthome.databinding.FragmentLoginBinding
 import com.example.smarthome.databinding.FragmentTitleBinding
 
 /**
  * A simple [Fragment] subclass.
  */
-class TitleFragment : Fragment() {
+class LoginFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        val binding = DataBindingUtil.inflate<FragmentTitleBinding>(inflater,
-            R.layout.fragment_title,container,false)
-
-        binding.btnLogin.setOnClickListener {view : View ->
-            view.findNavController().navigate(R.id.action_titleFragment_to_loginFragment)
-        }
-
-
+        val binding = DataBindingUtil.inflate<FragmentLoginBinding>(inflater,
+            R.layout.fragment_login,container,false)
         return binding.root
     }
 
