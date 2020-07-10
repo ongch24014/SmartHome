@@ -18,5 +18,22 @@
         android:id="@+id/loginFragment"
         android:name="com.example.smarthome.Login.LoginFragment"
         android:label="LoginFragment"
-        tools:layout="@layout/fragment_login"/>
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_lightFragment"
+            app:destination="@id/lightFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/lightFragment"
+        android:name="com.example.smarthome.LightModule.LightFragment"
+        android:label="LightFragment" >
+        <action
+            android:id="@+id/action_lightFragment_to_openCloseLightFragment"
+            app:destination="@id/openCloseLightFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/openCloseLightFragment"
+        android:name="com.example.smarthome.OpenCloseLightFragment"
+        android:label="fragment_open_close_light"
+        tools:layout="@layout/fragment_open_close_light" />
 </navigation>
