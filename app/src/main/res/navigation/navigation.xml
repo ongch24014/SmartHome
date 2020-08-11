@@ -13,16 +13,15 @@
         <action
             android:id="@+id/action_titleFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_titleFragment_to_lightFragment"
+            app:destination="@id/lightFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.smarthome.Login.LoginFragment"
         android:label="LoginFragment"
-        tools:layout="@layout/fragment_login">
-        <action
-            android:id="@+id/action_loginFragment_to_lightFragment"
-            app:destination="@id/lightFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_login"/>
     <fragment
         android:id="@+id/lightFragment"
         android:name="com.example.smarthome.LightModule.LightFragment"
