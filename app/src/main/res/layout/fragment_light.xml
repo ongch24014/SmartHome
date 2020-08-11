@@ -22,164 +22,158 @@
             android:text="@string/light_controller"
             android:textAllCaps="true"
             android:textColor="#3F51B5"
-            android:textSize="36sp"
+            android:textSize="24sp"
             android:textStyle="bold"
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cvLivingRoom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="64dp"
-            android:layout_marginLeft="64dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginEnd="64dp"
-            android:layout_marginRight="64dp"
-            android:clickable="true"
-            android:clipChildren="false"
-            android:clipToPadding="false"
-            android:divider="@android:color/transparent"
-            android:focusable="true"
-            android:foreground="?android:attr/selectableItemBackground"
-            app:cardElevation="10dp"
-            app:cardPreventCornerOverlap="false"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lightTitle">
-
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cvLivingRoom"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp">
+                android:layout_height="95dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lightTitle">
+
+                <ImageView
+                    android:id="@+id/icLivingRoom"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_margin="16dp"
+                    android:src="@drawable/ic_living_room"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
 
                 <TextView
                     android:id="@+id/txtRoom"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginStart="32dp"
                     android:text="@string/living_room"
                     android:textAlignment="center"
-                    android:textColor="@color/Azure"
+                    android:textColor="@color/azure"
                     android:textSize="24sp"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/icLivingRoom"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/txtTolDevice"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
                     android:text="@string/_3_devices"
                     android:textAlignment="center"
                     android:textColor="@color/lightGray"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/icLivingRoom"
                     app:layout_constraintTop_toBottomOf="@+id/txtRoom" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cvBedroom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="64dp"
-            android:layout_marginLeft="64dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="64dp"
-            android:layout_marginRight="64dp"
-            android:clickable="true"
-            android:clipChildren="false"
-            android:clipToPadding="false"
-            android:divider="@android:color/transparent"
-            android:focusable="true"
-            android:foreground="?android:attr/selectableItemBackground"
-            app:cardElevation="10dp"
-            app:cardPreventCornerOverlap="false"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cvLivingRoom">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:orientation="vertical"
+                android:id="@+id/cvBedroom"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp">
+                android:layout_height="95dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:background="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cvLivingRoom">
+
+                <ImageView
+                    android:id="@+id/icBedroom"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_margin="16dp"
+                    android:src="@drawable/ic_bed"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
 
                 <TextView
                     android:id="@+id/txtRoom2"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginStart="32dp"
                     android:text="Bedroom"
                     android:textAlignment="center"
-                    android:textColor="@color/Azure"
+                    android:textColor="@color/azure"
                     android:textSize="24sp"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/icBedroom"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/txtTolDevice2"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
                     android:text="@string/_3_devices"
                     android:textAlignment="center"
                     android:textColor="@color/lightGray"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/icBedroom"
                     app:layout_constraintTop_toBottomOf="@+id/txtRoom2" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cvBathroom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="64dp"
-            android:layout_marginLeft="64dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="64dp"
-            android:layout_marginRight="64dp"
-            android:clickable="true"
-            android:clipChildren="false"
-            android:clipToPadding="false"
-            android:divider="@android:color/transparent"
-            android:focusable="true"
-            android:foreground="?android:attr/selectableItemBackground"
-            app:cardElevation="10dp"
-            app:cardPreventCornerOverlap="false"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cvBedroom">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cvBathroom"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp">
+                android:layout_height="95dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cvBedroom">
+
+                <ImageView
+                    android:id="@+id/icBathroom"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_margin="16dp"
+                    android:src="@drawable/ic_bathroom"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
 
                 <TextView
                     android:id="@+id/txtRoom3"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginStart="32dp"
                     android:text="Bathroom"
                     android:textAlignment="center"
-                    android:textColor="@color/Azure"
+                    android:textColor="@color/azure"
                     android:textSize="24sp"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/icBathroom"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/txtTolDevice3"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
                     android:text="@string/_3_devices"
                     android:textAlignment="center"
                     android:textColor="@color/lightGray"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/icBathroom"
                     app:layout_constraintTop_toBottomOf="@+id/txtRoom3" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </com.google.android.material.card.MaterialCardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
