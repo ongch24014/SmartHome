@@ -13,10 +13,55 @@
         <action
             android:id="@+id/action_titleFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_titleFragment_to_doorFragment2"
+            app:destination="@id/doorFragment" />
+        <action
+            android:id="@+id/action_titleFragment_to_tempFragment2"
+            app:destination="@id/tempFragment" />
+        <action
+            android:id="@+id/action_titleFragment_to_analysisFragment3"
+            app:destination="@id/analysisFragment" />
+        <action
+            android:id="@+id/action_titleFragment_to_lightFragment2"
+            app:destination="@id/lightFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.smarthome.Login.LoginFragment"
-        android:label="LoginFragment"
-        tools:layout="@layout/fragment_login"/>
+        android:label="Login"
+        tools:layout="@layout/fragment_login" />
+
+    <fragment
+        android:id="@+id/lightFragment"
+        android:name="com.example.smarthome.LightModule.LightFragment"
+        android:label="Light Management">
+        <action
+            android:id="@+id/action_lightFragment_to_openCloseLightFragment"
+            app:destination="@id/openCloseLightFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/openCloseLightFragment"
+        android:name="com.example.smarthome.LightModule.OpenCloseLightFragment"
+        android:label="fragment_open_close_light"
+        tools:layout="@layout/fragment_open_close_light" />
+
+    <fragment
+        android:id="@+id/doorFragment"
+        android:name="com.example.smarthome.SmartDoorModule.DoorFragment"
+        android:label="Smart Door" />
+
+    <fragment
+        android:id="@+id/tempFragment"
+        android:name="com.example.smarthome.TempFragment"
+        android:label="fragment_temp"
+        tools:layout="@layout/fragment_temp" />
+
+    <fragment
+        android:id="@+id/analysisFragment"
+        android:name="com.example.smarthome.AnalysisFragment"
+        android:label="fragment_analysis"
+        tools:layout="@layout/fragment_analysis" />
 </navigation>
