@@ -4,53 +4,136 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".LightModule.OpenCloseLightFragment">
 
-<!--        <androidx.coordinatorlayout.widget.CoordinatorLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:fitsSystemWindows="true"-->
-<!--            style="@style/Theme.App">-->
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            app:layout_constraintTop_toTopOf="parent">
 
-<!--            <com.google.android.material.appbar.AppBarLayout-->
-<!--                android:id="@+id/appBar"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="152dp"-->
-<!--                android:fitsSystemWindows="true">-->
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appBar"
+                android:layout_width="match_parent"
+                android:layout_height="162dp"
+                android:fitsSystemWindows="true">
 
-<!--                <com.google.android.material.appbar.CollapsingToolbarLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    app:expandedTitleMarginStart="72dp"-->
-<!--                    app:expandedTitleMarginBottom="28dp"-->
-<!--                    android:fitsSystemWindows="true">-->
+                <com.google.android.material.appbar.CollapsingToolbarLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:expandedTitleMarginStart="72dp"
+                    app:expandedTitleMarginBottom="28dp"
+                    android:fitsSystemWindows="true">
 
-<!--                <ImageView-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:src="@color/azure"-->
-<!--                    android:scaleType="centerCrop"-->
-<!--                    android:fitsSystemWindows="true"-->
-<!--                    android:contentDescription="content_description_media"-->
-<!--                    />-->
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@color/lightBlue"
+                        android:scaleType="centerCrop"
+                        android:fitsSystemWindows="true"
+                        android:contentDescription="content_description_media"
+                        />
 
-<!--                    <com.google.android.material.appbar.MaterialToolbar-->
-<!--                        android:id="@+id/topAppBar"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="?attr/actionBarSize"-->
-<!--                        android:background="@android:color/transparent"-->
-<!--                        app:title="@string/page_title"-->
-<!--                        app:menu="@menu/top_app_bar"-->
-<!--                        app:navigationIcon="@drawable/ic_menu_24dp"-->
-<!--                        style="@style/Widget.MaterialComponents.Toolbar.Primary"-->
-<!--                        />-->
+                </com.google.android.material.appbar.CollapsingToolbarLayout>
+            </com.google.android.material.appbar.AppBarLayout>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-<!--                </com.google.android.material.appbar.CollapsingToolbarLayout>-->
-<!--            </com.google.android.material.appbar.AppBarLayout>-->
-<!--        </androidx.coordinatorlayout.widget.CoordinatorLayout>-->
+        <TextView
+            android:id="@+id/txtRoom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/living_room"
+            android:textSize="36sp"
+            app:layout_constraintBottom_toTopOf="@+id/txtTolDevice"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/txtTolDevice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/_3_devices"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/appBarLayout"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageButton
+            android:id="@+id/btnSetting"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/ic_lightbulb_outline"
+            android:background="@drawable/setting_button_border"
+            app:layout_constraintTop_toBottomOf="@id/appBarLayout"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/light_bg"
+            android:padding="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnSetting">
+
+            <ImageView
+                android:id="@+id/imgLight"
+                android:layout_width="64dp"
+                android:layout_height="65dp"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/ic_inactive_light"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txtLight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/light"
+                android:textColor="@color/lightBlue"
+                android:textSize="24sp"
+                app:layout_constraintStart_toEndOf="@+id/imgLight"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switch1"
+                android:layout_width="75dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:checked="false"
+                android:theme="@style/SCBSwitch"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="Close All Lights"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:backgroundTint="@android:color/holo_red_light"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

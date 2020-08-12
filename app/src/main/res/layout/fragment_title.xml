@@ -11,7 +11,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/header"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="60dp"
             android:background="@color/darkBlue"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -23,6 +23,7 @@
             android:id="@+id/header_title"
             android:layout_width="500dp"
             android:layout_height="150dp"
+            android:layout_marginTop="-100dp"
             android:background="@drawable/round_header"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -47,7 +48,7 @@
                 android:text="@string/smart_home"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textSize="36sp"
+                android:textSize="32sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -60,7 +61,7 @@
             android:layout_width="150dp"
             android:layout_height="210dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="75dp"
+            android:layout_marginTop="65dp"
             android:background="@color/white"
             android:clickable="true"
             android:elevation="3dp"
@@ -71,8 +72,8 @@
 
             <ImageView
                 android:id="@+id/iconDoor"
-                android:layout_width="80dp"
-                android:layout_height="115dp"
+                android:layout_width="85dp"
+                android:layout_height="120dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="24dp"
                 android:src="@drawable/ic_012_door_knob" />
@@ -93,7 +94,7 @@
             android:id="@+id/btnLight"
             android:layout_width="150dp"
             android:layout_height="210dp"
-            android:layout_marginTop="75dp"
+            android:layout_marginTop="65dp"
             android:layout_marginEnd="16dp"
             android:background="@color/white"
             android:clickable="true"
@@ -105,8 +106,8 @@
 
             <ImageView
                 android:id="@+id/iconLight"
-                android:layout_width="80dp"
-                android:layout_height="115dp"
+                android:layout_width="85dp"
+                android:layout_height="120dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="24dp"
                 android:src="@drawable/ic_004_lights" />
@@ -139,8 +140,8 @@
 
             <ImageView
                 android:id="@+id/iconTemp"
-                android:layout_width="80dp"
-                android:layout_height="115dp"
+                android:layout_width="85dp"
+                android:layout_height="120dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="24dp"
                 android:src="@drawable/ic_003_thermostat" />
@@ -173,8 +174,8 @@
 
             <ImageView
                 android:id="@+id/iconAnalysis"
-                android:layout_width="80dp"
-                android:layout_height="115dp"
+                android:layout_width="85dp"
+                android:layout_height="120dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="24dp"
                 android:src="@drawable/ic_013_smart_lock" />
