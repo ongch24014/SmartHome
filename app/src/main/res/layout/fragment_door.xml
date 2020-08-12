@@ -13,25 +13,78 @@
             android:id="@+id/txtDoorStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="108dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginStart="112dp"
+            android:layout_marginTop="16dp"
             android:text="DOOR UNLOCKED"
             android:textColor="#129B19"
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
+        <ImageButton
             android:id="@+id/btnDoor"
             android:layout_width="201dp"
             android:layout_height="200dp"
             android:layout_marginStart="104dp"
-            android:layout_marginTop="44dp"
+            android:layout_marginTop="32dp"
+            android:adjustViewBounds="true"
             android:background="@drawable/round_button_green"
             android:padding="50dp"
+            android:elevation="3dp"
+            android:scaleType="centerInside"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtDoorStatus"
-            app:srcCompat="@drawable/door_unlock" />
+            app:srcCompat="@drawable/door_unlock"/>
+
+
+        <Button
+            android:id="@+id/btnCapture"
+            android:layout_width="302dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/button_doorsection"
+            android:elevation="3dp"
+            android:padding="15dp"
+            android:scaleType="fitStart"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnDoor"
+            android:text="CAPTURE"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"/>
+
+        <Button
+            android:id="@+id/btnHistory"
+            android:layout_width="302dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/button_doorhistory"
+            android:elevation="3dp"
+            android:padding="12dp"
+            android:scaleType="fitStart"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnCapture"
+            android:text="HISTORY"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"/>
+
+        <Button
+            android:id="@+id/btnAlert"
+            android:layout_width="302dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/button_dooralert"
+            android:elevation="3dp"
+            android:padding="15dp"
+            android:scaleType="fitStart"
+            android:text="ALERT"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnHistory" />
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
