@@ -8,5 +8,5 @@
     <color name="lightBlue">#DFEDFC</color>
     <color name="lightGray">#C4C4C4</color>
     <color name="white">#FFFFFF</color>
-
+    <color name="doorbackground">#FFFFFF</color>
 </resources>

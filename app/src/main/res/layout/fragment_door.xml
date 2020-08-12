@@ -6,14 +6,33 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".SmartDoorModule.DoorFragment">
+        tools:context=".SmartDoorModule.DoorFragment"
+        android:background="@drawable/gradient_doorbackground">
 
-        <!-- TODO: Update blank fragment layout -->
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="door fragment"
-            android:textAlignment="center" />
+            android:id="@+id/txtDoorStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="108dp"
+            android:layout_marginTop="40dp"
+            android:text="DOOR UNLOCKED"
+            android:textColor="#129B19"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/btnDoor"
+            android:layout_width="201dp"
+            android:layout_height="200dp"
+            android:layout_marginStart="104dp"
+            android:layout_marginTop="44dp"
+            android:background="@drawable/round_button_green"
+            android:padding="50dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtDoorStatus"
+            app:srcCompat="@drawable/door_unlock" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
