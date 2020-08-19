@@ -10,6 +10,13 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.example.smarthome.databinding.FragmentTitleBinding
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import kotlinx.android.synthetic.main.fragment_title.*
+
+
 
 /**
  * A simple [Fragment] subclass.
@@ -48,7 +55,24 @@ class TitleFragment : Fragment() {
             view.findNavController().navigate(R.id.action_titleFragment_to_analysisFragment3)
         }
 
-        
+        var database = FirebaseDatabase.getInstance().reference
+
+        var getdata = object : ValueEventListener {
+            override fun onCancelled(dataSnapshot: DatabaseError) {
+
+            }
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+                val gg = snapshot.child("PI_01_CONTROL").child("buzzer").value
+                Log.d("Value",gg.toString())
+
+            }
+        }
+
+        //database.addValueEventListener(getdata)
+        database.addListenerForSingleValueEvent(getdata)
+
 
 
         return binding.root
