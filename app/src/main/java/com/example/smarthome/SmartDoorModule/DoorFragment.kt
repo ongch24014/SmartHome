@@ -87,6 +87,10 @@ class DoorFragment : Fragment() {
             txtDoorStatus.text = "DOOR UNLOCKED"
             txtDoorStatus.setTextColor("#129B19".toColorInt())
 
+            var database = FirebaseDatabase.getInstance().reference
+
+            database.child("PI_01_CONTROL").child("led").setValue("0")
+
         }
 
     }
