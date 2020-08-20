@@ -55,26 +55,6 @@ class TitleFragment : Fragment() {
             view.findNavController().navigate(R.id.action_titleFragment_to_analysisFragment3)
         }
 
-        var database = FirebaseDatabase.getInstance().reference
-
-        var getdata = object : ValueEventListener {
-            override fun onCancelled(dataSnapshot: DatabaseError) {
-
-            }
-
-            override fun onDataChange(snapshot: DataSnapshot) {
-
-                val gg = snapshot.child("PI_01_CONTROL").child("buzzer").value
-                Log.d("Value",gg.toString())
-
-            }
-        }
-
-        //database.addValueEventListener(getdata)
-        database.addListenerForSingleValueEvent(getdata)
-
-
-
         return binding.root
     }
 

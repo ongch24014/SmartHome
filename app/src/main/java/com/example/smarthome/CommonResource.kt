@@ -1,14 +1,18 @@
 package com.example.smarthome
 
 class CommonResource {
-    var buzzer = 0
-    var camera = 0
-    var lcd = 0
+    var buzzer = ""
+    var camera = ""
+    var lcd = ""
     var lcdtext = ""
-    var led = 0
-    var relay = 0
+    var led = ""
+    var relay = ""
 
-    constructor(buzzer:Int, camera:Int, lcd:Int, lcdtext:String, led:Int, relay:Int){
+    constructor(){
+
+    }
+
+    constructor(buzzer:String, camera:String, lcd:String, lcdtext:String, led:String, relay:String){
         this.buzzer = buzzer
         this.camera = camera
         this.lcd = lcd
