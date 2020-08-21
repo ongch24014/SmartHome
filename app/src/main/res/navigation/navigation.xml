@@ -51,7 +51,16 @@
     <fragment
         android:id="@+id/doorFragment"
         android:name="com.example.smarthome.SmartDoorModule.DoorFragment"
-        android:label="Smart Door" />
+        android:label="Smart Door"
+        tools:layout="@layout/fragment_door">
+        <action
+            android:id="@+id/action_doorFragment_to_captureFragment"
+            app:destination="@id/captureFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
 
     <fragment
         android:id="@+id/tempFragment"
@@ -64,4 +73,9 @@
         android:name="com.example.smarthome.AnalysisFragment"
         android:label="fragment_analysis"
         tools:layout="@layout/fragment_analysis" />
+    <fragment
+        android:id="@+id/captureFragment"
+        android:name="com.example.smarthome.SmartDoorModule.CaptureFragment"
+        android:label="CaptureFragment"
+        tools:layout="@layout/fragment_capture"/>
 </navigation>

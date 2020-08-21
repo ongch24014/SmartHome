@@ -11,6 +11,7 @@ import androidx.core.graphics.toColorInt
 import androidx.core.view.marginRight
 import androidx.core.view.marginStart
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import com.example.smarthome.CommonResource
 import com.example.smarthome.R
 import com.example.smarthome.databinding.FragmentDoorBinding
@@ -91,12 +92,16 @@ class DoorFragment : Fragment() {
 
             database.child("PI_01_CONTROL").child("led").setValue("0")
 
+
         }
 
     }
 
+        binding.btnCapture.setOnClickListener{ view : View ->
+            view.findNavController().navigate(R.id.action_doorFragment_to_captureFragment)
+        }
+
         return binding.root
     }
-
 
 }
