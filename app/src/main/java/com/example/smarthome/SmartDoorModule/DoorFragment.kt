@@ -41,7 +41,7 @@ class DoorFragment : Fragment() {
             btnDoor.setBackgroundResource(R.drawable.round_button_red)
             btnDoor.setImageResource(R.drawable.door_locked)
             txtDoorStatus.text = "  DOOR LOCKED"
-            txtDoorStatus.setTextColor("#9B1252".toColorInt())
+            txtDoorStatus.setTextColor("#9B1252".toColorInt()) //hey
 
 
 
