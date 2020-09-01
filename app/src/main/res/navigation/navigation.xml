@@ -46,7 +46,16 @@
         android:id="@+id/openCloseLightFragment"
         android:name="com.example.smarthome.LightModule.OpenCloseLightFragment"
         android:label="fragment_open_close_light"
-        tools:layout="@layout/fragment_open_close_light" />
+        tools:layout="@layout/fragment_open_close_light" >
+        <action
+            android:id="@+id/action_openCloseLightFragment_to_lightSettingFragment"
+            app:destination="@id/lightSettingFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/lightSettingFragment"
+        android:name="com.example.smarthome.LightModule.LightSettingFragment"
+        android:label="LightSettingFragment" />
 
     <fragment
         android:id="@+id/doorFragment"
@@ -78,4 +87,5 @@
         android:name="com.example.smarthome.SmartDoorModule.CaptureFragment"
         android:label="CaptureFragment"
         tools:layout="@layout/fragment_capture"/>
+
 </navigation>
