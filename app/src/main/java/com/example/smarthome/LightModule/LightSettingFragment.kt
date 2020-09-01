@@ -2,6 +2,7 @@ package com.example.smarthome.LightModule
 
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -22,12 +23,13 @@ class LightSettingFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        Log.i("test","456")
         val binding = DataBindingUtil.inflate<FragmentLightSettingBinding>(inflater,
             R.layout.fragment_light_setting,container,false)
 
-        val items = listOf("Material", "Design", "Components", "Android")
-        val adapter = ArrayAdapter(requireContext(), R.layout.fragment_light_setting, items)
-        //(binding.txtHoursfield.editText as? AutoCompleteTextView)?.setAdapter(adapter)
+//        val items = listOf("Material", "Design", "Components", "Android")
+//        val adapter = ArrayAdapter(requireContext(), R.layout.fragment_light_setting, items)
+//        (binding.txtHoursfield.editText as? AutoCompleteTextView)?.setAdapter(adapter)
 
         return binding.root
     }

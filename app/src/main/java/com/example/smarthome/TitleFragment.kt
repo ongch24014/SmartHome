@@ -36,22 +36,18 @@ class TitleFragment : Fragment() {
         }
 
         binding.btnDoor.setOnClickListener {view : View ->
-            Log.i("test","testDoor")
             view.findNavController().navigate(R.id.action_titleFragment_to_doorFragment2)
         }
 
         binding.btnLight.setOnClickListener {view : View ->
-            Log.i("test","test222")
             view.findNavController().navigate(R.id.action_titleFragment_to_lightFragment2)
         }
 
         binding.btnTemp.setOnClickListener {view : View ->
-            Log.i("test","testDoor")
             view.findNavController().navigate(R.id.action_titleFragment_to_tempFragment2)
         }
 
         binding.btnAnalysis.setOnClickListener {view : View ->
-            Log.i("test","testDoor")
             view.findNavController().navigate(R.id.action_titleFragment_to_analysisFragment3)
         }
 

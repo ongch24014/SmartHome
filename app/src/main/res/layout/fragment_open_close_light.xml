@@ -38,30 +38,30 @@
             android:id="@+id/btnSetting"
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:src="@drawable/ic_lightbulb_outline"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/ic_settings"
             android:background="@drawable/setting_button_border"
-            app:layout_constraintTop_toBottomOf="@id/appBarLayout"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/light1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="24dp"
             android:background="@drawable/light_bg"
             android:padding="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnSetting">
+            app:layout_constraintTop_toBottomOf="@id/appBarLayout">
 
             <ImageView
                 android:id="@+id/imgLight"
-                android:layout_width="64dp"
-                android:layout_height="65dp"
+                android:layout_width="50dp"
+                android:layout_height="51dp"
                 android:layout_marginStart="16dp"
                 android:src="@drawable/ic_inactive_light"
                 app:layout_constraintStart_toStartOf="parent"
@@ -72,12 +72,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
                 android:text="@string/light"
                 android:textColor="@color/lightBlue"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/imgLight"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/switch1"
@@ -96,9 +96,9 @@
             android:id="@+id/light2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="15dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="24dp"
             android:background="@drawable/light_bg"
             android:padding="8dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -107,8 +107,8 @@
 
             <ImageView
                 android:id="@+id/imgLight2"
-                android:layout_width="64dp"
-                android:layout_height="65dp"
+                android:layout_width="50dp"
+                android:layout_height="51dp"
                 android:layout_marginStart="16dp"
                 android:src="@drawable/ic_inactive_light"
                 app:layout_constraintStart_toStartOf="parent"
@@ -119,12 +119,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/light"
+                android:text="LIGHT 2"
                 android:textColor="@color/lightBlue"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/imgLight2"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/switch2"
