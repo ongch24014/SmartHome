@@ -11,7 +11,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.example.smarthome.R
 import com.example.smarthome.databinding.FragmentLightBinding
-import com.example.smarthome.databinding.FragmentLoginBinding
+
 
 /**
  * A simple [Fragment] subclass.
@@ -22,7 +22,7 @@ class LightFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Log.i("test","Light")
+
         val binding = DataBindingUtil.inflate<FragmentLightBinding>(inflater,
             R.layout.fragment_light,container,false)
 
