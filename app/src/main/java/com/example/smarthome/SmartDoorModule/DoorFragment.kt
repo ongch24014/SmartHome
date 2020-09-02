@@ -124,7 +124,8 @@ class DoorFragment : Fragment() {
                 minute = minute + 1
             }
 
-            full = year.toString() + String.format("%02d",month) + String.format("%02d",day) + String.format("%02d",hour) + String.format("%02d",minute) + String.format("%02d",second)
+            //cam_20200902000710.jpg
+            full = "cam_" + year.toString() + String.format("%02d",month) + String.format("%02d",day) + String.format("%02d",hour) + String.format("%02d",minute) + String.format("%02d",second) + ".jpg"
 
             val toast = Toast.makeText(context, "Capturing, Please wait...", Toast.LENGTH_LONG)
             toast.show()
@@ -139,7 +140,8 @@ class DoorFragment : Fragment() {
                 Log.d("Value",Calendar.getInstance().get(Calendar.MINUTE).toString())
                 Log.d("Value",Calendar.getInstance().get(Calendar.SECOND).toString())
 
-                view.findNavController().navigate(R.id.action_doorFragment_to_captureFragment)
+                view.findNavController().navigate(DoorFragmentDirections.actionDoorFragmentToCaptureFragment(full)
+                    )
 
             }
 

@@ -86,6 +86,10 @@
         android:id="@+id/captureFragment"
         android:name="com.example.smarthome.SmartDoorModule.CaptureFragment"
         android:label="CaptureFragment"
-        tools:layout="@layout/fragment_capture"/>
+        tools:layout="@layout/fragment_capture">
+        <argument
+            android:name="imageId"
+            app:argType="string" />
+    </fragment>
 
 </navigation>
