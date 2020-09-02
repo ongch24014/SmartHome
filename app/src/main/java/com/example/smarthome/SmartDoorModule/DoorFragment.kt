@@ -1,6 +1,7 @@
 package com.example.smarthome.SmartDoorModule
 
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.os.Looper
 import android.util.Log
@@ -150,7 +151,46 @@ class DoorFragment : Fragment() {
 
             }
 
+        }
 
+        binding.btnAlert.setOnClickListener { v: View? ->
+            var database = FirebaseDatabase.getInstance().reference
+
+            val builder = AlertDialog.Builder(this.context)
+            builder.setTitle("Alert")
+            builder.setMessage("Trigger Alarm and call 911?")
+
+            builder.setPositiveButton("Alarm only") { dialog, which ->
+                Log.d("Value","YES YES YES YES")
+                Toast.makeText(this.context, "Alarm triggered", Toast.LENGTH_SHORT).show()
+                database.child("PI_01_CONTROL").child("lcdtext").setValue("= Unauthorized =")
+                database.child("PI_01_CONTROL").child("buzzer").setValue("1")
+
+                Timer().schedule(5000){
+                    Looper.prepare()
+                    database.child("PI_01_CONTROL").child("buzzer").setValue("0")
+                }
+
+            }
+
+            builder.setNegativeButton("Alarm and call 911") { dialog, which ->
+                Toast.makeText(this.context, "Alarm triggered, 911 called", Toast.LENGTH_SHORT).show()
+                database.child("PI_01_CONTROL").child("lcdtext").setValue("Calling 911...  ")
+                database.child("PI_01_CONTROL").child("buzzer").setValue("1")
+
+                Timer().schedule(5000){
+                    Looper.prepare()
+                    database.child("PI_01_CONTROL").child("buzzer").setValue("0")
+                }
+            }
+
+            builder.setNeutralButton("Cancel") { dialog, which ->
+                Toast.makeText(this.context, "Alert Cancelled", Toast.LENGTH_SHORT).show()
+                database.child("PI_01_CONTROL").child("lcdtext").setValue("=App is running=")
+            }
+
+            val alertDialog = builder.create()
+            alertDialog.show()
 
         }
 
