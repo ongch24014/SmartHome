@@ -23,6 +23,7 @@ import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.fragment_door.*
 import kotlinx.android.synthetic.main.fragment_door.btnDoor
 import kotlinx.android.synthetic.main.fragment_title.*
+import java.util.*
 
 /**
  * A simple [Fragment] subclass.
@@ -41,7 +42,7 @@ class DoorFragment : Fragment() {
             btnDoor.setBackgroundResource(R.drawable.round_button_red)
             btnDoor.setImageResource(R.drawable.door_locked)
             txtDoorStatus.text = "  DOOR LOCKED"
-            txtDoorStatus.setTextColor("#9B1252".toColorInt())
+            txtDoorStatus.setTextColor("#9B1252".toColorInt()) //hey
 
 
 
@@ -99,6 +100,39 @@ class DoorFragment : Fragment() {
 
         binding.btnCapture.setOnClickListener{ view : View ->
             view.findNavController().navigate(R.id.action_doorFragment_to_captureFragment)
+
+            //cam_2020 09 02 00 07 10
+            //cam 2020 09 02 00 35 19
+            var year:Int = 0
+            var month:Int = 0
+            var day:Int = 0
+            var hour:Int = 0
+            var minute:Int = 0
+            var second:Int = 0
+            var full:String = ""
+
+            year = Calendar.getInstance().get(Calendar.YEAR)
+            month = Calendar.getInstance().get(Calendar.MONTH) + 1
+            day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
+            hour = Calendar.getInstance().get(Calendar.HOUR)
+            minute = Calendar.getInstance().get(Calendar.MINUTE)
+            second = (((Calendar.getInstance().get(Calendar.SECOND) / 10) + 1) * 10)
+
+            if(second == 60){
+                second = 0
+            }
+
+            full = year.toString() + String.format("%02d",month) + String.format("%02d",day) + String.format("%02d",hour) + String.format("%02d",minute) + String.format("%02d",second)
+
+            Log.d("Value",full)
+            Log.d("Value",Calendar.getInstance().get(Calendar.YEAR).toString())
+            Log.d("Value",Calendar.getInstance().get(Calendar.MONTH).toString())
+            Log.d("Value",Calendar.getInstance().get(Calendar.DAY_OF_MONTH).toString())
+            Log.d("Value",Calendar.getInstance().get(Calendar.HOUR).toString())
+            Log.d("Value",Calendar.getInstance().get(Calendar.MINUTE).toString())
+            Log.d("Value",Calendar.getInstance().get(Calendar.SECOND).toString())
+
+            Calendar.getInstance().get(Calendar.YEAR)
         }
 
         return binding.root
