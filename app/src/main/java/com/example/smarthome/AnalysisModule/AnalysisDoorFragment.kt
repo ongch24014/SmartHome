@@ -25,7 +25,7 @@ class AnalysisDoorFragment : Fragment() {
         val binding = DataBindingUtil.inflate<FragmentAnalysisDoorBinding>(inflater,
             R.layout.fragment_analysis_door,container,false)
 
-
+        //this is a test
 
         return binding.root
     }
