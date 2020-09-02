@@ -31,13 +31,13 @@ class MainActivity : AppCompatActivity() {
 //                val toast1 = Toast.makeText(applicationContext, "check check", Toast.LENGTH_LONG)
 //                toast1.show()
                 if(yesno == true) {
-                    val i = Intent(AlarmClock.ACTION_SET_TIMER)
-                    i.putExtra(AlarmClock.EXTRA_MESSAGE, "DOOR OPENED!")
-                    i.putExtra(AlarmClock.EXTRA_LENGTH, 2)
-                    i.putExtra(AlarmClock.EXTRA_SKIP_UI, true)
-                    startActivity(i)
-
-                    yesno = false;
+//                    val i = Intent(AlarmClock.ACTION_SET_TIMER)
+//                    i.putExtra(AlarmClock.EXTRA_MESSAGE, "DOOR OPENED!")
+//                    i.putExtra(AlarmClock.EXTRA_LENGTH, 2)
+//                    i.putExtra(AlarmClock.EXTRA_SKIP_UI, true)
+//                    startActivity(i)
+//
+//                    yesno = false;
 
 
                     Timer().schedule(15000) {
