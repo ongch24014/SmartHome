@@ -48,9 +48,6 @@ class DoorFragment : Fragment() {
             txtDoorStatus.text = "  DOOR LOCKED"
             txtDoorStatus.setTextColor("#9B1252".toColorInt()) //hey
 
-
-
-
             var database = FirebaseDatabase.getInstance().reference
 
             database.child("PI_01_CONTROL").addListenerForSingleValueEvent(object : ValueEventListener{

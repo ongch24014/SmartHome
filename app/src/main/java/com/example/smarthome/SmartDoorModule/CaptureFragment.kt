@@ -138,6 +138,7 @@ class CaptureFragment : Fragment() {
 
 
         return binding.root
+
     }
 
     internal var showSuccessToast: Runnable = Runnable {
@@ -147,3 +148,4 @@ class CaptureFragment : Fragment() {
 
 
 }
+
