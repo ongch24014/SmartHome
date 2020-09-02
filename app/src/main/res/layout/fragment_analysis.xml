@@ -1,14 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".AnalysisFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+
+        android:id="@+id/ConstraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Analysis Fragment" />
+        android:background="#3899BE"
+        tools:context=".Analysis.AnalysisFragment">
 
-</FrameLayout>
+        <Button
+            android:id="@+id/btnDoor"
+            android:layout_width="302dp"
+            android:layout_height="80dp"
+            android:background="#FF9800"
+            android:elevation="3dp"
+            android:padding="15dp"
+            android:scaleType="fitStart"
+            android:text="DOOR"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@+id/btnLight"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtAnalysis" />
+
+        <Button
+            android:id="@+id/btnTemp"
+            android:layout_width="302dp"
+            android:layout_height="80dp"
+            android:layout_marginBottom="100dp"
+            android:background="#FF5722"
+            android:elevation="3dp"
+            android:padding="15dp"
+            android:scaleType="fitStart"
+            android:text="TEMPERATURE"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/btnLight"
+            android:layout_width="302dp"
+            android:layout_height="80dp"
+            android:background="#FFEB3B"
+            android:elevation="3dp"
+            android:padding="15dp"
+            android:scaleType="fitStart"
+            android:text="LIGHT"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@+id/btnTemp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtAnalysis"
+            app:layout_constraintVertical_bias="0.771" />
+
+        <TextView
+            android:id="@+id/txtAnalysis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="56dp"
+            android:text="ANALYSIS"
+            android:textColor="#FFFFFF"
+            android:textSize="36sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

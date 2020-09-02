@@ -79,9 +79,19 @@
 
     <fragment
         android:id="@+id/analysisFragment"
-        android:name="com.example.smarthome.AnalysisFragment"
+        android:name="com.example.smarthome.AnalysisModule.AnalysisFragment"
         android:label="fragment_analysis"
-        tools:layout="@layout/fragment_analysis" />
+        tools:layout="@layout/fragment_analysis" >
+        <action
+            android:id="@+id/action_analysisFragment_to_analysisLightFragment"
+            app:destination="@id/analysisLightFragment" />
+        <action
+            android:id="@+id/action_analysisFragment_to_analysisTemperatureFragment"
+            app:destination="@id/analysisTemperatureFragment" />
+        <action
+            android:id="@+id/action_analysisFragment_to_analysisDoorFragment2"
+            app:destination="@id/analysisDoorFragment2" />
+    </fragment>
     <fragment
         android:id="@+id/captureFragment"
         android:name="com.example.smarthome.SmartDoorModule.CaptureFragment"
@@ -94,5 +104,17 @@
             android:id="@+id/action_captureFragment_self"
             app:destination="@id/captureFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/analysisDoorFragment2"
+        android:name="com.example.smarthome.AnalysisModule.AnalysisDoorFragment"
+        android:label="AnalysisDoorFragment" />
+    <fragment
+        android:id="@+id/analysisTemperatureFragment"
+        android:name="com.example.smarthome.AnalysisModule.AnalysisTemperatureFragment"
+        android:label="AnalysisTemperatureFragment" />
+    <fragment
+        android:id="@+id/analysisLightFragment"
+        android:name="com.example.smarthome.AnalysisModule.AnalysisLightFragment"
+        android:label="AnalysisLightFragment" />
 
 </navigation>
