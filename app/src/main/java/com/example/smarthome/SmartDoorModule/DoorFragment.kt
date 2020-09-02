@@ -103,6 +103,9 @@ class DoorFragment : Fragment() {
 
         binding.btnCapture.setOnClickListener{ view : View ->
 
+            var database = FirebaseDatabase.getInstance().reference
+
+            database.child("PI_01_CONTROL").child("camera").setValue("1")
 
             var year:Int = 0
             var month:Int = 0
@@ -115,9 +118,16 @@ class DoorFragment : Fragment() {
             year = Calendar.getInstance().get(Calendar.YEAR)
             month = Calendar.getInstance().get(Calendar.MONTH) + 1
             day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
-            hour = Calendar.getInstance().get(Calendar.HOUR)
+            hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
             minute = Calendar.getInstance().get(Calendar.MINUTE)
             second = (((Calendar.getInstance().get(Calendar.SECOND) / 10) + 1) * 10)
+
+            Log.d("Value",Calendar.getInstance().get(Calendar.YEAR).toString())
+            Log.d("Value",Calendar.getInstance().get(Calendar.MONTH).toString())
+            Log.d("Value",Calendar.getInstance().get(Calendar.DAY_OF_MONTH).toString())
+            Log.d("Value",Calendar.getInstance().get(Calendar.HOUR_OF_DAY).toString())
+            Log.d("Value",Calendar.getInstance().get(Calendar.MINUTE).toString())
+            Log.d("Value",Calendar.getInstance().get(Calendar.SECOND).toString())
 
             if(second == 60){
                 second = 0
@@ -130,15 +140,10 @@ class DoorFragment : Fragment() {
             val toast = Toast.makeText(context, "Capturing, Please wait...", Toast.LENGTH_LONG)
             toast.show()
 
-            Timer().schedule(3000){
+            Timer().schedule(15000){
                 Looper.prepare()
                 Log.d("Value",full)
-                Log.d("Value",Calendar.getInstance().get(Calendar.YEAR).toString())
-                Log.d("Value",Calendar.getInstance().get(Calendar.MONTH).toString())
-                Log.d("Value",Calendar.getInstance().get(Calendar.DAY_OF_MONTH).toString())
-                Log.d("Value",Calendar.getInstance().get(Calendar.HOUR).toString())
-                Log.d("Value",Calendar.getInstance().get(Calendar.MINUTE).toString())
-                Log.d("Value",Calendar.getInstance().get(Calendar.SECOND).toString())
+                database.child("PI_01_CONTROL").child("camera").setValue("0")
 
                 view.findNavController().navigate(DoorFragmentDirections.actionDoorFragmentToCaptureFragment(full)
                     )

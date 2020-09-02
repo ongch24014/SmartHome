@@ -33,10 +33,12 @@ class CaptureFragment : Fragment() {
         val binding = DataBindingUtil.inflate<FragmentCaptureBinding>(inflater,
             R.layout.fragment_capture,container,false)
 
+        val args = CaptureFragmentArgs.fromBundle(arguments!!)
+
         val storage = Firebase.storage("gs://bait2123-202006-01.appspot.com")
         var storageRef = storage.reference
 
-        var spaceRef = storageRef.child("PI_01_CONTROL").child("cam_20200814155920.jpg")
+        var spaceRef = storageRef.child("PI_01_CONTROL").child(args.imageId)
 
         spaceRef.downloadUrl.addOnSuccessListener { it ->
 
