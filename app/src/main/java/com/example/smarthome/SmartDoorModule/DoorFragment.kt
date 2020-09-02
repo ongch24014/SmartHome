@@ -2,11 +2,13 @@ package com.example.smarthome.SmartDoorModule
 
 
 import android.os.Bundle
+import android.os.Looper
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.graphics.toColorInt
 import androidx.core.view.marginRight
 import androidx.core.view.marginStart
@@ -24,6 +26,7 @@ import kotlinx.android.synthetic.main.fragment_door.*
 import kotlinx.android.synthetic.main.fragment_door.btnDoor
 import kotlinx.android.synthetic.main.fragment_title.*
 import java.util.*
+import kotlin.concurrent.schedule
 
 /**
  * A simple [Fragment] subclass.
@@ -99,10 +102,8 @@ class DoorFragment : Fragment() {
     }
 
         binding.btnCapture.setOnClickListener{ view : View ->
-            view.findNavController().navigate(R.id.action_doorFragment_to_captureFragment)
 
-            //cam_2020 09 02 00 07 10
-            //cam 2020 09 02 00 35 19
+
             var year:Int = 0
             var month:Int = 0
             var day:Int = 0
@@ -120,19 +121,30 @@ class DoorFragment : Fragment() {
 
             if(second == 60){
                 second = 0
+                minute = minute + 1
             }
 
             full = year.toString() + String.format("%02d",month) + String.format("%02d",day) + String.format("%02d",hour) + String.format("%02d",minute) + String.format("%02d",second)
 
-            Log.d("Value",full)
-            Log.d("Value",Calendar.getInstance().get(Calendar.YEAR).toString())
-            Log.d("Value",Calendar.getInstance().get(Calendar.MONTH).toString())
-            Log.d("Value",Calendar.getInstance().get(Calendar.DAY_OF_MONTH).toString())
-            Log.d("Value",Calendar.getInstance().get(Calendar.HOUR).toString())
-            Log.d("Value",Calendar.getInstance().get(Calendar.MINUTE).toString())
-            Log.d("Value",Calendar.getInstance().get(Calendar.SECOND).toString())
+            val toast = Toast.makeText(context, "Capturing, Please wait...", Toast.LENGTH_LONG)
+            toast.show()
 
-            Calendar.getInstance().get(Calendar.YEAR)
+            Timer().schedule(3000){
+                Looper.prepare()
+                Log.d("Value",full)
+                Log.d("Value",Calendar.getInstance().get(Calendar.YEAR).toString())
+                Log.d("Value",Calendar.getInstance().get(Calendar.MONTH).toString())
+                Log.d("Value",Calendar.getInstance().get(Calendar.DAY_OF_MONTH).toString())
+                Log.d("Value",Calendar.getInstance().get(Calendar.HOUR).toString())
+                Log.d("Value",Calendar.getInstance().get(Calendar.MINUTE).toString())
+                Log.d("Value",Calendar.getInstance().get(Calendar.SECOND).toString())
+
+                view.findNavController().navigate(R.id.action_doorFragment_to_captureFragment)
+
+            }
+
+
+
         }
 
         return binding.root
