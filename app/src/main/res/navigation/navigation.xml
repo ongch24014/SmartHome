@@ -122,6 +122,10 @@
     <fragment
         android:id="@+id/doorHistoryFragment"
         android:name="com.example.smarthome.SmartDoorModule.DoorHistoryFragment"
-        android:label="DoorHistoryFragment" />
+        android:label="DoorHistoryFragment" >
+        <action
+            android:id="@+id/action_doorHistoryFragment_to_captureFragment"
+            app:destination="@id/captureFragment" />
+    </fragment>
 
 </navigation>
