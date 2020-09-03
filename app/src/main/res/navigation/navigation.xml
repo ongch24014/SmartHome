@@ -85,7 +85,11 @@
         android:id="@+id/tempFragment"
         android:name="com.example.smarthome.TempFragment"
         android:label="fragment_temp"
-        tools:layout="@layout/fragment_temp" />
+        tools:layout="@layout/fragment_temp" >
+        <action
+            android:id="@+id/action_tempFragment_to_livingRoomTempFragment"
+            app:destination="@id/livingRoomTempFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/analysisFragment"
@@ -143,5 +147,10 @@
         android:name="com.example.smarthome.SmartDoorModule.DoorScenarioFragment"
         android:label="DoorScenarioFragment"
         tools:layout="@layout/fragment_door_scenario"/>
+    <fragment
+        android:id="@+id/livingRoomTempFragment"
+        android:name="com.example.smarthome.LivingRoomTempFragment"
+        android:label="fragment_living_room_temp"
+        tools:layout="@layout/fragment_living_room_temp" />
 
 </navigation>
