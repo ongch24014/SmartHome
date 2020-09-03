@@ -17,6 +17,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.example.potensituitionapp.database.Door
 import com.example.smarthome.CommonResource
+import com.example.smarthome.MainActivity
+import com.example.smarthome.MainActivity.Companion.bellRing
 import com.example.smarthome.R
 import com.example.smarthome.database.SmartHomeDatabase
 import com.example.smarthome.databinding.FragmentDoorBinding
@@ -215,8 +217,10 @@ class DoorFragment : Fragment() {
         binding.btnHistory.setOnClickListener { v: View? ->
             view!!.findNavController().navigate(R.id.action_doorFragment_to_doorHistoryFragment)
 
+        }
 
-
+        binding.btnScene.setOnClickListener { v: View? ->
+            view!!.findNavController().navigate(R.id.action_doorFragment_to_doorScenarioFragment)
         }
 
         return binding.root

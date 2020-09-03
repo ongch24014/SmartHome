@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import com.example.smarthome.MainActivity.Companion.bellRing
 import com.example.smarthome.databinding.FragmentTitleBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -32,6 +33,18 @@ class TitleFragment : Fragment() {
         // Inflate the layout for this fragment
         val binding = DataBindingUtil.inflate<FragmentTitleBinding>(inflater,
             R.layout.fragment_title,container,false)
+
+        if(bellRing.equals("")) {
+            binding.btnRing.visibility = View.GONE
+        }
+        else{
+            binding.btnRing.visibility = View.VISIBLE
+
+        }
+
+        binding.btnRing.setOnClickListener { v: View? ->
+            bellRing = ""
+        }
 
         binding.btnHomeLogin.setOnClickListener {view : View ->
             view.findNavController().navigate(R.id.action_titleFragment_to_loginFragment)

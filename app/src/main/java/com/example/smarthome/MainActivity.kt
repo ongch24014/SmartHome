@@ -1,7 +1,9 @@
 package com.example.smarthome
 
 import android.app.NotificationManager
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -17,9 +19,19 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
+    lateinit var sharedPreferences: SharedPreferences
+
+    companion object {
+        var bellRing = ""
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+
+        sharedPreferences = getPreferences(Context.MODE_PRIVATE)
+
+        bellRing = sharedPreferences.getString("bellRing","").toString()
 
         var yesno:Boolean = true;
 
@@ -55,6 +67,28 @@ class MainActivity : AppCompatActivity() {
             }
         }, 10000)
 
+    }
+
+    override fun onResume() {
+        bellRing = sharedPreferences.getString("bellRing","").toString()
+
+        super.onResume()
+    }
+
+    override fun onPause() {
+        with(sharedPreferences.edit()){
+            putString("bellRing", bellRing)
+            commit()
+        }
+        super.onPause()
+    }
+
+    override fun onStop() {
+        with(sharedPreferences.edit()){
+            putString("bellRing", bellRing)
+            commit()
+        }
+        super.onStop()
     }
 
 

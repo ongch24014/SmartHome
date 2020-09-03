@@ -24,6 +24,13 @@ data class Lights (
     @ColumnInfo(name = "time")
     var time: String = "",
 
+    @ColumnInfo(name = "selected_time")
+    var selectedTime: String = "",
+
+    @ColumnInfo(name = "option")
+    var option: String = "",
+
     @ColumnInfo(name = "fulldate")
     var fulldate: String = ""
 )
+
