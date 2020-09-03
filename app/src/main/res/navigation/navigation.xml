@@ -55,7 +55,11 @@
     <fragment
         android:id="@+id/lightSettingFragment"
         android:name="com.example.smarthome.LightModule.LightSettingFragment"
-        android:label="LightSettingFragment" />
+        android:label="LightSettingFragment" >
+        <action
+            android:id="@+id/action_lightSettingFragment_to_setTimeFragment"
+            app:destination="@id/setTimeFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/doorFragment"
@@ -87,5 +91,10 @@
         android:name="com.example.smarthome.SmartDoorModule.CaptureFragment"
         android:label="CaptureFragment"
         tools:layout="@layout/fragment_capture"/>
+    <fragment
+        android:id="@+id/setTimeFragment"
+        android:name="com.example.smarthome.LightModule.SetTimeFragment"
+        android:label="fragment_set_time"
+        tools:layout="@layout/fragment_set_time" />
 
 </navigation>

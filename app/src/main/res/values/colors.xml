@@ -9,4 +9,6 @@
     <color name="lightGray">#C4C4C4</color>
     <color name="white">#FFFFFF</color>
     <color name="doorbackground">#FFFFFF</color>
+    <color name="lightPink">#FF5A5A</color>
+    <color name="lightGreen">#65FF7E</color>
 </resources>
