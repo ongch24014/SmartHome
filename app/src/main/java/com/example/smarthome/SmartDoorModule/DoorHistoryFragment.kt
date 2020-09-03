@@ -36,7 +36,7 @@ class DoorHistoryFragment : Fragment(){
         Log.i("test",abc[1].num.toString())
 
         binding.doorList.layoutManager = LinearLayoutManager(this.context)
-        binding.doorList.adapter = DoorHistoryAdapter(dataSource.getDoors(),view)
+        binding.doorList.adapter = DoorHistoryAdapter(dataSource.getDoors(),this.activity)
 
         return binding.root
     }

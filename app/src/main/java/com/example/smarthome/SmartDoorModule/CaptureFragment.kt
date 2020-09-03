@@ -54,6 +54,8 @@ class CaptureFragment : Fragment() {
         var storageRef = storage.reference
 
         var spaceRef = storageRef.child("PI_01_CONTROL").child(args.imageId)
+        //var spaceRef = storageRef.child("PI_01_CONTROL").child("cam_20200903162420.jpg")
+        Log.i("test","capture" + args.imageId)
         //var spaceRef = storageRef.child("PI_01_CONTROL").child("cam_20200903101200.jpg")
 
         spaceRef.downloadUrl.addOnSuccessListener { it ->
