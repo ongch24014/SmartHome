@@ -9,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
-
 import com.example.smarthome.R
 import com.example.smarthome.databinding.FragmentLightBinding
 import com.example.smarthome.databinding.FragmentLoginBinding

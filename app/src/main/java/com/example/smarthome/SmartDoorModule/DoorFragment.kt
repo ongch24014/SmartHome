@@ -119,7 +119,7 @@ class DoorFragment : Fragment() {
 
         }
 
-        else{
+            else{
 
             btnDoor.setBackgroundResource(R.drawable.round_button_green)
             btnDoor.setImageResource(R.drawable.door_unlock)

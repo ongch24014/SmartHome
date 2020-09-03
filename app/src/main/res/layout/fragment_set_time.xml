@@ -10,16 +10,33 @@
         tools:context=".LightModule.SetTimeFragment">
 
         <!-- TODO: Update blank fragment layout -->
+        <View
+            android:id="@+id/line1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/lightGray"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/setTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:text="Set Time"
-            android:textSize="20sp"
+            android:textSize="30sp"
+            android:textColor="@color/darkBlue"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/line1" />
+
+        <View
+            android:id="@+id/line2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/lightGray"
+            app:layout_constraintTop_toBottomOf="@+id/setTitle" />
 
         <TextView
             android:id="@+id/txtSelectedTime"
@@ -29,72 +46,84 @@
             android:text="Please select the time: "
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/setTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/line2" />
 
-        <View
-            android:id="@+id/view1"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
+        <TimePicker
+            android:id="@+id/timePicker1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:background="@color/lightGray"
+            android:timePickerMode="spinner"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtSelectedTime" />
 
         <TextView
             android:id="@+id/txtUserSelTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp"
-            android:text="selected time"
-            android:textSize="24sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view1" />
-
-        <Button
-            android:id="@+id/btnSetTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Add Time"
-            android:background="@color/darkBlue"
-            android:textColor="@color/white"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintStart_toEndOf="@+id/txtUserSelTime"
-            app:layout_constraintTop_toBottomOf="@+id/view1" />
-
-        <View
-            android:id="@+id/view2"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@color/lightGray"
-            app:layout_constraintTop_toBottomOf="@+id/txtUserSelTime" />
+            android:padding="8dp"
+            android:text="selected time"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textColor="@color/darkBlue"
+            android:background="@drawable/setting_button_border"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/timePicker1" />
 
         <Button
             android:id="@+id/btnAutoOn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
-            android:padding="8dp"
             android:background="@color/lightGreen"
+            android:padding="8dp"
             android:text="Auto On all"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view2" />
+            app:layout_constraintTop_toBottomOf="@+id/txtUserSelTime" />
 
         <Button
             android:id="@+id/btnAutoOff"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
-            android:padding="8dp"
             android:background="@color/lightPink"
+            android:padding="8dp"
             android:text="Auto Off all"
             app:layout_constraintEnd_toStartOf="@+id/btnAutoOn"
-            app:layout_constraintTop_toBottomOf="@+id/view2" />
+            app:layout_constraintTop_toBottomOf="@+id/txtUserSelTime" />
 
+        <TextView
+            android:id="@+id/txtUserSelOption"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:padding="8dp"
+            android:text="selected option"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textColor="@color/darkBlue"
+            android:background="@drawable/setting_button_border"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnAutoOff" />
 
+        <Button
+            android:id="@+id/btnSet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/darkBlue"
+            android:padding="8dp"
+            android:text="Add"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtUserSelOption" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
