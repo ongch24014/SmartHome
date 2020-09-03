@@ -33,7 +33,6 @@ class DoorHistoryFragment : Fragment(){
         val dataSource = SmartHomeDatabase.getInstance(application).doorDatabaseDao
 
         val abc = dataSource.getDoors()
-        Log.i("test",abc[1].num.toString())
 
         binding.doorList.layoutManager = LinearLayoutManager(this.context)
         binding.doorList.adapter = DoorHistoryAdapter(dataSource.getDoors(),this.activity)

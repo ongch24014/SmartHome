@@ -28,6 +28,7 @@ class DoorHistoryAdapter (private var doorid: List<Door>, var view: FragmentActi
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val itemTitle: TextView = itemView.findViewById(R.id.txtDoorId)
+        val itemTitle1: TextView = itemView.findViewById(R.id.txtDay)
 
     }
 
@@ -42,6 +43,7 @@ class DoorHistoryAdapter (private var doorid: List<Door>, var view: FragmentActi
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemTitle.text = doorid[position].doorID
+        holder.itemTitle1.text = doorid[position].day + "/" + doorid[position].month + "/" + doorid[position].year
 
         holder.itemView.setOnClickListener { v: View? ->
             Log.i("test", doorid[position].doorID)

@@ -36,7 +36,8 @@
     <fragment
         android:id="@+id/lightFragment"
         android:name="com.example.smarthome.LightModule.LightFragment"
-        android:label="Light Management">
+        android:label="Light Management"
+        tools:layout="@layout/fragment_light">
         <action
             android:id="@+id/action_lightFragment_to_openCloseLightFragment"
             app:destination="@id/openCloseLightFragment" />
@@ -110,19 +111,23 @@
     <fragment
         android:id="@+id/analysisDoorFragment2"
         android:name="com.example.smarthome.AnalysisModule.AnalysisDoorFragment"
-        android:label="AnalysisDoorFragment" />
+        android:label="AnalysisDoorFragment"
+        tools:layout="@layout/fragment_analysis_door"/>
     <fragment
         android:id="@+id/analysisTemperatureFragment"
         android:name="com.example.smarthome.AnalysisModule.AnalysisTemperatureFragment"
-        android:label="AnalysisTemperatureFragment" />
+        android:label="AnalysisTemperatureFragment"
+        tools:layout="@layout/fragment_analysis_temperature"/>
     <fragment
         android:id="@+id/analysisLightFragment"
         android:name="com.example.smarthome.AnalysisModule.AnalysisLightFragment"
-        android:label="AnalysisLightFragment" />
+        android:label="AnalysisLightFragment"
+        tools:layout="@layout/fragment_analysis_light"/>
     <fragment
         android:id="@+id/doorHistoryFragment"
         android:name="com.example.smarthome.SmartDoorModule.DoorHistoryFragment"
-        android:label="DoorHistoryFragment" >
+        android:label="DoorHistoryFragment"
+        tools:layout="@layout/fragment_door_history">
         <action
             android:id="@+id/action_doorHistoryFragment_to_captureFragment"
             app:destination="@id/captureFragment" />
