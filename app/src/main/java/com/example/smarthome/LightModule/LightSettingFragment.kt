@@ -11,6 +11,8 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
+import com.example.smarthome.R
 import com.example.smarthome.databinding.FragmentLightSettingBinding
 import com.google.android.material.snackbar.Snackbar
 import com.michaldrabik.classicmaterialtimepicker.CmtpDialogFragment
@@ -39,23 +41,7 @@ class LightSettingFragment : Fragment() {
 //        (binding.txtHoursfield.editText as? AutoCompleteTextView)?.setAdapter(adapter)
 
         binding.fabAdd.setOnClickListener { view ->
-            val timePicker = CmtpDialogFragment.newInstance()
-
-            timePicker.setInitialTime12(5, 15, CmtpTime12.PmAm.PM)
-            timePicker.setOnTime12PickedListener { time12 ->
-
-                val cal:Calendar = Calendar.getInstance()
-                val timeSetListener: TimePickerDialog.OnTimeSetListener =
-                    TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
-                        cal.set(Calendar.HOUR_OF_DAY, hour)
-                        cal.set(Calendar.MINUTE, minute)
-                    }
-                Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null)
-                    .show()
-            }
-            timePicker.show(activity!!.supportFragmentManager, "TimePickerTag")
-
+            view.findNavController().navigate(R.id.action_lightSettingFragment_to_setTimeFragment)
         }
 
         return binding.root
