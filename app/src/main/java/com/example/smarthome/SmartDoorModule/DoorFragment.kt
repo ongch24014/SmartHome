@@ -15,8 +15,10 @@ import androidx.core.view.marginRight
 import androidx.core.view.marginStart
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import com.example.potensituitionapp.database.Door
 import com.example.smarthome.CommonResource
 import com.example.smarthome.R
+import com.example.smarthome.database.SmartHomeDatabase
 import com.example.smarthome.databinding.FragmentDoorBinding
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.database.DataSnapshot
@@ -57,7 +59,7 @@ class DoorFragment : Fragment() {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     val commonResource = dataSnapshot.getValue(CommonResource::class.java)
                     Log.d("Value",commonResource!!.lcdtext)
-                    txtDoorStatus.text=commonResource!!.lcdtext
+                    txtDoorStatus.text=commonResource.lcdtext
                 }
 
             })
@@ -105,13 +107,13 @@ class DoorFragment : Fragment() {
 
             database.child("PI_01_CONTROL").child("camera").setValue("1")
 
-            var year:Int = 0
-            var month:Int = 0
-            var day:Int = 0
-            var hour:Int = 0
-            var minute:Int = 0
-            var second:Int = 0
-            var full:String = ""
+            var year:Int
+            var month:Int
+            var day:Int
+            var hour:Int
+            var minute:Int
+            var second:Int
+            var full:String
 
             year = Calendar.getInstance().get(Calendar.YEAR)
             month = Calendar.getInstance().get(Calendar.MONTH) + 1
@@ -188,6 +190,23 @@ class DoorFragment : Fragment() {
 
             val alertDialog = builder.create()
             alertDialog.show()
+
+        }
+
+        binding.btnHistory.setOnClickListener { v: View? ->
+
+            val application = requireNotNull(this.activity).application
+            val dataSource = SmartHomeDatabase.getInstance(application).doorDatabaseDao
+
+            var door = Door()
+
+            door.doorID = "door1"
+
+            dataSource.insert(door)
+
+            var count:Int = dataSource.getCount()
+
+            Log.d("Value",count.toString())
 
         }
 
