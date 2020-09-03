@@ -6,12 +6,16 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.potensituitionapp.database.*
 
-@Database(entities = arrayOf(Door::class, Lights::class, Temperature::class), version = 3,exportSchema = false)
+@Database(entities = arrayOf(Door::class, Lights::class, Temperature::class, DoorLock::class, DoorUnlock::class), version = 4,exportSchema = false)
 abstract class SmartHomeDatabase : RoomDatabase() {
 
     abstract val doorDatabaseDao: DoorDao
+    abstract val doorLockDatabaseDao: DoorLockDao
+    abstract val doorUnlockDatabaseDao: DoorUnlockDao
+
     abstract val lightsDatabaseDao: LightsDao
     abstract val temperatureDatabaseDao: TemperatureDao
+
 
     companion object {
         @Volatile
