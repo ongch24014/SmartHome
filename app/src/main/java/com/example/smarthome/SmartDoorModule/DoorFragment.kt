@@ -150,8 +150,7 @@ class DoorFragment : Fragment() {
                 Log.d("Value",full)
                 database.child("PI_01_CONTROL").child("camera").setValue("0")
 
-                view.findNavController().navigate(DoorFragmentDirections.actionDoorFragmentToCaptureFragment(full)
-                    )
+                view.findNavController().navigate(DoorFragmentDirections.actionDoorFragmentToCaptureFragment(full))
             }
 
             val application = requireNotNull(this.activity).application

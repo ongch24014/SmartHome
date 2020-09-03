@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_titleFragment_to_lightFragment2"
             app:destination="@id/lightFragment" />
+        <action
+            android:id="@+id/action_titleFragment_to_captureFragment"
+            app:destination="@id/captureFragment" />
     </fragment>
 
     <fragment

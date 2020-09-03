@@ -43,7 +43,9 @@ class TitleFragment : Fragment() {
         }
 
         binding.btnRing.setOnClickListener { v: View? ->
+            view!!.findNavController().navigate(TitleFragmentDirections.actionTitleFragmentToCaptureFragment(bellRing))
             bellRing = ""
+
         }
 
         binding.btnHomeLogin.setOnClickListener {view : View ->
