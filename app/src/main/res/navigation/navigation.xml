@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_titleFragment_to_lightFragment2"
             app:destination="@id/lightFragment" />
+        <action
+            android:id="@+id/action_titleFragment_to_captureFragment"
+            app:destination="@id/captureFragment" />
     </fragment>
 
     <fragment
@@ -36,7 +39,8 @@
     <fragment
         android:id="@+id/lightFragment"
         android:name="com.example.smarthome.LightModule.LightFragment"
-        android:label="Light Management">
+        android:label="Light Management"
+        tools:layout="@layout/fragment_light">
         <action
             android:id="@+id/action_lightFragment_to_openCloseLightFragment"
             app:destination="@id/openCloseLightFragment" />
@@ -73,28 +77,91 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_doorFragment_to_doorHistoryFragment"
+            app:destination="@id/doorHistoryFragment" />
+        <action
+            android:id="@+id/action_doorFragment_to_doorScenarioFragment"
+            app:destination="@id/doorScenarioFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/tempFragment"
         android:name="com.example.smarthome.TempFragment"
         android:label="fragment_temp"
-        tools:layout="@layout/fragment_temp" />
+        tools:layout="@layout/fragment_temp" >
+        <action
+            android:id="@+id/action_tempFragment_to_livingRoomTempFragment"
+            app:destination="@id/livingRoomTempFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/analysisFragment"
-        android:name="com.example.smarthome.AnalysisFragment"
+        android:name="com.example.smarthome.AnalysisModule.AnalysisFragment"
         android:label="fragment_analysis"
-        tools:layout="@layout/fragment_analysis" />
+        tools:layout="@layout/fragment_analysis" >
+        <action
+            android:id="@+id/action_analysisFragment_to_analysisLightFragment"
+            app:destination="@id/analysisLightFragment" />
+        <action
+            android:id="@+id/action_analysisFragment_to_analysisTemperatureFragment"
+            app:destination="@id/analysisTemperatureFragment" />
+        <action
+            android:id="@+id/action_analysisFragment_to_analysisDoorFragment2"
+            app:destination="@id/analysisDoorFragment2" />
+    </fragment>
     <fragment
         android:id="@+id/captureFragment"
         android:name="com.example.smarthome.SmartDoorModule.CaptureFragment"
         android:label="CaptureFragment"
-        tools:layout="@layout/fragment_capture"/>
+        tools:layout="@layout/fragment_capture">
+        <argument
+            android:name="imageId"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_captureFragment_self"
+            app:destination="@id/captureFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/analysisDoorFragment2"
+        android:name="com.example.smarthome.AnalysisModule.AnalysisDoorFragment"
+        android:label="AnalysisDoorFragment"
+        tools:layout="@layout/fragment_analysis_door"/>
+    <fragment
+        android:id="@+id/analysisTemperatureFragment"
+        android:name="com.example.smarthome.AnalysisModule.AnalysisTemperatureFragment"
+        android:label="AnalysisTemperatureFragment"
+        tools:layout="@layout/fragment_analysis_temperature"/>
+    <fragment
+        android:id="@+id/analysisLightFragment"
+        android:name="com.example.smarthome.AnalysisModule.AnalysisLightFragment"
+        android:label="AnalysisLightFragment"
+        tools:layout="@layout/fragment_analysis_light"/>
+  
     <fragment
         android:id="@+id/setTimeFragment"
         android:name="com.example.smarthome.LightModule.SetTimeFragment"
         android:label="fragment_set_time"
         tools:layout="@layout/fragment_set_time" />
+  
+    <fragment
+        android:id="@+id/doorHistoryFragment"
+        android:name="com.example.smarthome.SmartDoorModule.DoorHistoryFragment"
+        android:label="DoorHistoryFragment"
+        tools:layout="@layout/fragment_door_history">
+        <action
+            android:id="@+id/action_doorHistoryFragment_to_captureFragment"
+            app:destination="@id/captureFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/doorScenarioFragment"
+        android:name="com.example.smarthome.SmartDoorModule.DoorScenarioFragment"
+        android:label="DoorScenarioFragment"
+        tools:layout="@layout/fragment_door_scenario"/>
+    <fragment
+        android:id="@+id/livingRoomTempFragment"
+        android:name="com.example.smarthome.LivingRoomTempFragment"
+        android:label="fragment_living_room_temp"
+        tools:layout="@layout/fragment_living_room_temp" />
 
 </navigation>
