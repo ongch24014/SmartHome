@@ -28,4 +28,5 @@ interface DoorDao {
 
     @Query("SELECT COUNT(*) FROM door_table")
     fun getCount(): Int
+
 }

@@ -63,6 +63,9 @@ class DoorFragment : Fragment() {
                 }
 
             })
+
+            //20200903101200
+            //20200903101200
 //
 //            var getdata = object : ValueEventListener {
 //                override fun onCancelled(dataSnapshot: DatabaseError) {
@@ -147,8 +150,24 @@ class DoorFragment : Fragment() {
 
                 view.findNavController().navigate(DoorFragmentDirections.actionDoorFragmentToCaptureFragment(full)
                     )
-
             }
+
+            val application = requireNotNull(this.activity).application
+            val dataSource = SmartHomeDatabase.getInstance(application).doorDatabaseDao
+
+            var door = Door()
+
+            door.doorID = full
+            door.year = year.toString()
+            door.month = month.toString()
+            door.day = day.toString()
+            door.time = String.format("%02d",hour) + ":" + String.format("%02d",minute)
+
+            dataSource.insert(door)
+
+            var count:Int = dataSource.getCount()
+
+            Log.d("Value",count.toString())
 
         }
 
@@ -195,18 +214,7 @@ class DoorFragment : Fragment() {
 
         binding.btnHistory.setOnClickListener { v: View? ->
 
-            val application = requireNotNull(this.activity).application
-            val dataSource = SmartHomeDatabase.getInstance(application).doorDatabaseDao
 
-            var door = Door()
-
-            door.doorID = "door1"
-
-            dataSource.insert(door)
-
-            var count:Int = dataSource.getCount()
-
-            Log.d("Value",count.toString())
 
         }
 

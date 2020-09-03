@@ -30,7 +30,8 @@ import kotlin.concurrent.schedule
 import android.graphics.Bitmap
 import androidx.navigation.findNavController
 import com.bumptech.glide.request.target.BitmapImageViewTarget
-
+import com.example.potensituitionapp.database.Door
+import com.example.smarthome.database.SmartHomeDatabase
 
 
 /**
@@ -53,6 +54,7 @@ class CaptureFragment : Fragment() {
         var storageRef = storage.reference
 
         var spaceRef = storageRef.child("PI_01_CONTROL").child(args.imageId)
+        //var spaceRef = storageRef.child("PI_01_CONTROL").child("cam_20200903101200.jpg")
 
         spaceRef.downloadUrl.addOnSuccessListener { it ->
 
@@ -100,12 +102,26 @@ class CaptureFragment : Fragment() {
             Timer().schedule(15000){
                 Looper.prepare()
                 Log.d("Value","no show")
+                Log.d("Value",full)
                 database.child("PI_01_CONTROL").child("camera").setValue("0")
 
                 handler.postDelayed(showSuccessToast,1500)
 
                 view!!.findNavController().navigate(CaptureFragmentDirections.actionCaptureFragmentSelf(full))
             }
+
+            val application = requireNotNull(this.activity).application
+            val dataSource = SmartHomeDatabase.getInstance(application).doorDatabaseDao
+
+            var door = Door()
+
+            door.doorID = full
+            door.year = year.toString()
+            door.month = month.toString()
+            door.day = day.toString()
+            door.time = String.format("%02d",hour) + ":" + String.format("%02d",minute)
+
+            dataSource.insert(door)
 
         }
 
