@@ -16,6 +16,8 @@ import androidx.core.view.marginStart
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.example.potensituitionapp.database.Door
+import com.example.potensituitionapp.database.DoorLock
+import com.example.potensituitionapp.database.DoorUnlock
 import com.example.smarthome.CommonResource
 import com.example.smarthome.MainActivity
 import com.example.smarthome.MainActivity.Companion.bellRing
@@ -61,10 +63,37 @@ class DoorFragment : Fragment() {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     val commonResource = dataSnapshot.getValue(CommonResource::class.java)
                     Log.d("Value",commonResource!!.lcdtext)
-                    txtDoorStatus.text=commonResource.lcdtext
+                    //txtDoorStatus.text=commonResource.lcdtext
                 }
 
             })
+
+            var year:Int
+            var month:Int
+            var day:Int
+            var hour:Int
+            var minute:Int
+            var second:Int
+            var full:String
+
+            year = Calendar.getInstance().get(Calendar.YEAR)
+            month = Calendar.getInstance().get(Calendar.MONTH) + 1
+            day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
+            hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
+            minute = Calendar.getInstance().get(Calendar.MINUTE)
+            second = (((Calendar.getInstance().get(Calendar.SECOND) / 10) + 1) * 10)
+
+            val application = requireNotNull(this.activity).application
+            val dataSource = SmartHomeDatabase.getInstance(application).doorLockDatabaseDao
+
+            var doorLock = DoorLock()
+
+            doorLock.year = year.toString()
+            doorLock.month = month.toString()
+            doorLock.day = day.toString()
+            doorLock.time = String.format("%02d",hour) + ":" + String.format("%02d",minute)
+
+            dataSource.insert(doorLock)
 
             //20200903101200
             //20200903101200
@@ -100,6 +129,33 @@ class DoorFragment : Fragment() {
             var database = FirebaseDatabase.getInstance().reference
 
             database.child("PI_01_CONTROL").child("led").setValue("0")
+
+            var year:Int
+            var month:Int
+            var day:Int
+            var hour:Int
+            var minute:Int
+            var second:Int
+            var full:String
+
+            year = Calendar.getInstance().get(Calendar.YEAR)
+            month = Calendar.getInstance().get(Calendar.MONTH) + 1
+            day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
+            hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
+            minute = Calendar.getInstance().get(Calendar.MINUTE)
+            second = (((Calendar.getInstance().get(Calendar.SECOND) / 10) + 1) * 10)
+
+            val application = requireNotNull(this.activity).application
+            val dataSource1 = SmartHomeDatabase.getInstance(application).doorUnlockDatabaseDao
+
+            var doorUnlock = DoorUnlock()
+
+            doorUnlock.year = year.toString()
+            doorUnlock.month = month.toString()
+            doorUnlock.day = day.toString()
+            doorUnlock.time = String.format("%02d",hour) + ":" + String.format("%02d",minute)
+
+            dataSource1.insert(doorUnlock)
 
 
         }
