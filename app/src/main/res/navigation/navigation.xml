@@ -69,6 +69,9 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_doorFragment_to_doorHistoryFragment"
+            app:destination="@id/doorHistoryFragment" />
     </fragment>
 
     <fragment
@@ -116,5 +119,9 @@
         android:id="@+id/analysisLightFragment"
         android:name="com.example.smarthome.AnalysisModule.AnalysisLightFragment"
         android:label="AnalysisLightFragment" />
+    <fragment
+        android:id="@+id/doorHistoryFragment"
+        android:name="com.example.smarthome.SmartDoorModule.DoorHistoryFragment"
+        android:label="DoorHistoryFragment" />
 
 </navigation>

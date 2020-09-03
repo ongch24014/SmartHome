@@ -14,6 +14,9 @@ interface TemperatureDao {
     @Update
     fun update(temperature: Temperature)
 
+    @Query("SELECT * from temperature_table WHERE num = :key")
+    fun getFromKey(key: Long): Temperature?
+
     @Query("SELECT * from temperature_table WHERE temperature_ID = :key")
     fun get(key: String): Temperature?
 

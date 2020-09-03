@@ -14,6 +14,9 @@ interface LightsDao {
     @Update
     fun update(lights: Lights)
 
+    @Query("SELECT * from lights_table WHERE num = :key")
+    fun getFromKey(key: Long): Lights?
+
     @Query("SELECT * from lights_table WHERE lights_ID = :key")
     fun get(key: String): Lights?
 

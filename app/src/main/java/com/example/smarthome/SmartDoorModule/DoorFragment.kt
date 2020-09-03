@@ -213,6 +213,7 @@ class DoorFragment : Fragment() {
         }
 
         binding.btnHistory.setOnClickListener { v: View? ->
+            view!!.findNavController().navigate(R.id.action_doorFragment_to_doorHistoryFragment)
 
 
 

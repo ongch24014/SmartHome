@@ -14,6 +14,9 @@ interface DoorDao {
     @Update
     fun update(door: Door)
 
+    @Query("SELECT * from door_table WHERE num = :key")
+    fun getFromKey(key: Long): Door?
+
     @Query("SELECT * from door_table WHERE door_ID = :key")
     fun get(key: String): Door?
 
