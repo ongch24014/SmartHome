@@ -123,7 +123,7 @@
 
     <fragment
         android:id="@+id/tempFragment"
-        android:name="com.example.smarthome.TempFragment"
+        android:name="com.example.smarthome.Temperature.TempFragment"
         android:label="fragment_temp"
         tools:layout="@layout/fragment_temp" >
         <action
@@ -204,7 +204,7 @@
         tools:layout="@layout/fragment_door_scenario"/>
     <fragment
         android:id="@+id/livingRoomTempFragment"
-        android:name="com.example.smarthome.LivingRoomTempFragment"
+        android:name="com.example.smarthome.Temperature.LivingRoomTempFragment"
         android:label="fragment_living_room_temp"
         tools:layout="@layout/fragment_living_room_temp" />
 
