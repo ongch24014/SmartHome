@@ -15,6 +15,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.example.potensituitionapp.database.Door
+import com.example.smarthome.CommonResourcesData
 import com.example.smarthome.MainActivity
 import com.example.smarthome.MainActivity.Companion.bellRing
 
@@ -22,7 +23,10 @@ import com.example.smarthome.R
 import com.example.smarthome.database.SmartHomeDatabase
 import com.example.smarthome.databinding.FragmentDoorBinding
 import com.example.smarthome.databinding.FragmentDoorScenarioBinding
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import java.util.*
 import kotlin.concurrent.schedule
 
@@ -40,6 +44,7 @@ class DoorScenarioFragment : Fragment() {
             R.layout.fragment_door_scenario,container,false)
 
         val handler = Handler()
+        val handler1 = Handler()
 
         binding.btnRing.setOnClickListener{v: View? ->
             var database = FirebaseDatabase.getInstance().reference
@@ -112,6 +117,60 @@ class DoorScenarioFragment : Fragment() {
             var count:Int = dataSource.getCount()
 
             Log.d("Value",count.toString())
+        }
+
+
+        binding.txtDoor.setOnClickListener { v: View? ->
+
+            handler1.postDelayed(object : Runnable {
+                override fun run() {
+
+                    handler1.postDelayed(this, 10000)//1 sec delay
+//                val toast1 = Toast.makeText(applicationContext, "check check", Toast.LENGTH_LONG)
+//                toast1.show()
+
+                    var year:Int
+                    var month:Int
+                    var day:Int
+                    var hour:Int
+                    var minute:Int
+                    var second:Int
+                    var full:String
+                    second = (((Calendar.getInstance().get(Calendar.SECOND) / 10) + 1) * 10)
+                    second = second - 10
+
+                    year = Calendar.getInstance().get(Calendar.YEAR)
+                    month = Calendar.getInstance().get(Calendar.MONTH) + 1
+                    day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
+                    hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
+                    minute = Calendar.getInstance().get(Calendar.MINUTE)
+
+                    if(second == 60){
+                        second = 0
+                        minute = minute + 1
+                    }
+
+                    else if (second < 0){
+                        second = 0
+                    }
+
+                    var child1 = "PI_01_" + year + String.format("%02d",month) + String.format("%02d",day)
+                    var child2 = String.format("%02d",hour)
+                    var child3 = String.format("%02d",minute) + String.format("%02d",second)
+
+
+                    var database = FirebaseDatabase.getInstance().reference
+
+                    //database.child(child1).child(child2).child(child3).child("ultra").setValue("0")
+
+                    database.child(child1).child(child2).child(child3).child("ultra").setValue("600")
+
+                }
+            }, 10000)
+        }
+
+        binding.txtDoorClose.setOnClickListener { v: View? ->
+            handler1.removeMessages(0)
         }
 
         return binding.root
