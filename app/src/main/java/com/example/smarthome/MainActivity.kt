@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
                 var second:Int
                 var full:String
                 second = (((Calendar.getInstance().get(Calendar.SECOND) / 10) + 1) * 10)
-                second = second - 10
+                second = second - 20
 
                 year = Calendar.getInstance().get(Calendar.YEAR)
                 month = Calendar.getInstance().get(Calendar.MONTH) + 1
@@ -71,12 +71,24 @@ class MainActivity : AppCompatActivity() {
                     minute = minute + 1
                 }
 
+                else if (second == -10){
+                    minute = minute - 1
+                    second = 50
+                }
+
+                else if (second == -20){
+                    minute = minute - 1
+                    second = 0
+                }
+
                 var child1 = "PI_01_" + year + String.format("%02d",month) + String.format("%02d",day)
                 var child2 = String.format("%02d",hour)
                 var child3 = String.format("%02d",minute) + String.format("%02d",second)
 
 
                 var database = FirebaseDatabase.getInstance().reference
+
+                //database.child(child1).child(child2).child(child3).child("ultra").setValue("0")
 
                 database.child(child1).child(child2).child(child3).addListenerForSingleValueEvent(object :
                     ValueEventListener {
@@ -85,7 +97,8 @@ class MainActivity : AppCompatActivity() {
 
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
                         val commonResource = dataSnapshot.getValue(CommonResourcesData::class.java)
-                        //Log.d("Value",commonResource!!.ultra)
+                        Log.d("Ultrasonic","Ultrasonic = "+ commonResource?.ultra)
+                        Log.d("Ultrasonic","Ultrasonic = "+ child3)
                         val ultra:String? = commonResource?.ultra
 
                         if(ultra.equals(null)){
@@ -93,15 +106,17 @@ class MainActivity : AppCompatActivity() {
                         }
 
                         else{
-                            if (ultra!!.toInt() > 494){
-                                val toast1 = Toast.makeText(applicationContext, "check check", Toast.LENGTH_LONG)
-                                toast1.show()
+                            if (ultra!!.toInt() > 500){
+//                                val toast1 = Toast.makeText(applicationContext, "check check", Toast.LENGTH_LONG)
+//                                toast1.show()
+                                val i = Intent(AlarmClock.ACTION_SET_TIMER)
+                                i.putExtra(AlarmClock.EXTRA_MESSAGE, "Door Opened!!")
+                                i.putExtra(AlarmClock.EXTRA_LENGTH, 2)
+                                i.putExtra(AlarmClock.EXTRA_SKIP_UI, true)
+                                startActivity(i)
                             }
                         }
-
-
                     }
-
                 })
 
                 if(yesno == true) {
@@ -155,6 +170,4 @@ class MainActivity : AppCompatActivity() {
         }
         super.onStop()
     }
-
-
 }

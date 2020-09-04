@@ -35,5 +35,41 @@
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/txtDoor"
+            android:layout_width="279dp"
+            android:layout_height="57dp"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="112dp"
+            android:background="@drawable/button_dooralert"
+
+            android:text="Open Door"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnRing" />
+
+        <Button
+            android:id="@+id/txtDoorClose"
+            android:layout_width="279dp"
+            android:layout_height="57dp"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="56dp"
+            android:background="@drawable/button_doorhistory"
+            android:text="Close Door"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtDoor" />
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="409dp"
+            android:layout_height="10dp"
+            android:layout_marginTop="48dp"
+            android:background="#61368DF7"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnRing" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -6,7 +6,8 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.potensituitionapp.database.*
 
-@Database(entities = arrayOf(Door::class, Lights::class, Temperature::class, DoorLock::class, DoorUnlock::class), version = 4,exportSchema = false)
+@Database(entities = arrayOf(Door::class, Lights::class, Temperature::class, DoorLock::class, DoorUnlock::class,
+    Lights1::class,Lights2::class,Lights3::class), version = 5,exportSchema = false)
 abstract class SmartHomeDatabase : RoomDatabase() {
 
     abstract val doorDatabaseDao: DoorDao
@@ -14,6 +15,9 @@ abstract class SmartHomeDatabase : RoomDatabase() {
     abstract val doorUnlockDatabaseDao: DoorUnlockDao
 
     abstract val lightsDatabaseDao: LightsDao
+    abstract val lights1DatabaseDao: Lights1Dao
+    abstract val lights2DatabaseDao: Lights2Dao
+    abstract val lights3DatabaseDao: Lights3Dao
     abstract val temperatureDatabaseDao: TemperatureDao
 
 
