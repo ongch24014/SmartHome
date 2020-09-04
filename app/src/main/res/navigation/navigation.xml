@@ -129,6 +129,9 @@
         <action
             android:id="@+id/action_tempFragment_to_livingRoomTempFragment"
             app:destination="@id/livingRoomTempFragment" />
+        <action
+            android:id="@+id/action_tempFragment_to_bedRoomTempFragment"
+            app:destination="@id/bedRoomTempFragment" />
     </fragment>
 
     <fragment
@@ -207,5 +210,9 @@
         android:name="com.example.smarthome.Temperature.LivingRoomTempFragment"
         android:label="fragment_living_room_temp"
         tools:layout="@layout/fragment_living_room_temp" />
+    <fragment
+        android:id="@+id/bedRoomTempFragment"
+        android:name="com.example.smarthome.Temperature.BedRoomTempFragment"
+        android:label="BedRoomTempFragment" />
 
 </navigation>

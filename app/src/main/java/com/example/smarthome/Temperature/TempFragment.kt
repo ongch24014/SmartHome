@@ -23,9 +23,14 @@ class TempFragment : Fragment() {
         val binding = DataBindingUtil.inflate<FragmentTempBinding>(inflater,
             R.layout.fragment_temp,container,false)
 
-        binding.LivingR.setOnClickListener {view : View ->
+        binding.LivingR.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_tempFragment_to_livingRoomTempFragment)
         }
+            binding.BedR.setOnClickListener {view : View ->
+                view.findNavController().navigate(R.id.action_tempFragment_to_bedRoomTempFragment)
+        }
+
+
 
 
         return binding.root
