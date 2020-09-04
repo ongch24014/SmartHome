@@ -94,7 +94,6 @@ class MainActivity : AppCompatActivity() {
 
                 })
 
-
                 if(yesno == true) {
 //                    val i = Intent(AlarmClock.ACTION_SET_TIMER)
 //                    i.putExtra(AlarmClock.EXTRA_MESSAGE, "DOOR OPENED!")
