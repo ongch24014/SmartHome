@@ -63,18 +63,32 @@
                 app:layout_constraintVertical_bias="1.0" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/txtUnlock"
                 android:layout_width="409dp"
                 android:layout_height="70dp"
                 android:background="#FDFCFC"
-                android:text="Number of times the door has been opened: "
+                android:text="Number of times the door has been unlocked: "
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editText3" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/txtLock"
+                android:layout_width="409dp"
+                android:layout_height="70dp"
+                android:background="#FDFCFC"
+                android:text="Number of times the door has been locked: "
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtUnlock"
+                app:layout_constraintVertical_bias="0.135" />
+
+            <TextView
+                android:id="@+id/txtCap"
                 android:layout_width="409dp"
                 android:layout_height="70dp"
                 android:background="#FDFCFC"
@@ -84,8 +98,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView2"
-                app:layout_constraintVertical_bias="0.076" />
+                app:layout_constraintTop_toBottomOf="@+id/txtUnlock"
+                app:layout_constraintVertical_bias="0.695" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
