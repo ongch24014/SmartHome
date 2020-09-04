@@ -43,21 +43,25 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
 
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvLightTimer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/setting_button_border"
+            android:layout_marginTop="10dp"
+            tools:listitem="@layout/item_set_time"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/settingAppBar">
+            app:layout_constraintTop_toBottomOf="@+id/settingAppBar"/>
 
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--            android:id="@+id/constraintLayout"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            android:layout_marginTop="50dp"-->
+<!--            android:layout_marginEnd="16dp"-->
+<!--            android:background="@drawable/setting_button_border"-->
+<!--            >-->
 
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton

@@ -178,7 +178,11 @@
         android:id="@+id/setTimeFragment"
         android:name="com.example.smarthome.LightModule.SetTimeFragment"
         android:label="fragment_set_time"
-        tools:layout="@layout/fragment_set_time" />
+        tools:layout="@layout/fragment_set_time" >
+        <action
+            android:id="@+id/action_setTimeFragment_to_lightSettingFragment"
+            app:destination="@id/lightSettingFragment" />
+    </fragment>
   
     <fragment
         android:id="@+id/doorHistoryFragment"

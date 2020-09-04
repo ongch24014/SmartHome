@@ -16,7 +16,9 @@ import com.example.smarthome.databinding.FragmentSetTimeBinding
 import android.widget.Toast
 import androidx.core.text.bold
 import androidx.navigation.findNavController
+import com.example.potensituitionapp.database.Lights
 import com.example.smarthome.CommonResource
+import com.example.smarthome.R
 import com.example.smarthome.SmartDoorModule.CaptureFragmentDirections
 import com.example.smarthome.database.SmartHomeDatabase
 import com.google.firebase.database.DataSnapshot
@@ -64,25 +66,25 @@ class SetTimeFragment : Fragment() {
 
             val parser = SimpleDateFormat("H:m")
             val formatter = SimpleDateFormat("HH:mm")
-//            val formatter2 = SimpleDateFormat("HH:mm")
+            val formatter2 = SimpleDateFormat("mm")
             val selectedTime = formatter.format(parser.parse("$hourOfDay:$minute")!!)
 
            // val date = simpleDateFormat.format(selectedTime)
             binding.txtUserSelTime.text = selectedTime + " $AM_PM"
 
             //need format to HHmm
-            //val time = formatter2.format(parser.parse("$minute")!!)
+            val time = formatter2.format(parser.parse("$minute")!!)
 
             //save data
             val editor:SharedPreferences.Editor = sharedPreferences.edit()
             editor.apply{
                 putString("STRING_KEY", selectedTime)
-                //putString("Minute", time)
+                putString("Minute", time)
             }.apply()
             Toast.makeText(
                 activity, sharedPreferences.getString("STRING_KEY", null), Toast.LENGTH_LONG
             ).show()
-            Log.i("test",sharedPreferences.getString("STRING_KEY", null))
+            Log.i("test",sharedPreferences.getString("Minute", null))
         })
 
         //if (binding.btnAutoOn.isClickable){
@@ -120,49 +122,47 @@ class SetTimeFragment : Fragment() {
 
         binding.btnSet.setOnClickListener {
             CompareTime()
+            view!!.findNavController().navigate(R.id.action_setTimeFragment_to_lightSettingFragment)
         }
         return binding.root
     }
 
     private fun CompareTime() {
-        var getmin:String? = sharedPreferences.getString("STRING_KEY", null)
-        getmin = getmin?.takeLast(2)
-        var minnow = Calendar.getInstance().get(Calendar.MINUTE)
+        val application = requireNotNull(this.activity).application
+        val dataSource = SmartHomeDatabase.getInstance(application).lightsDatabaseDao
+        var light = Lights()
+
+        val currentTime = SimpleDateFormat("mm", Locale.getDefault()).format(Date())!!.toInt()
+        val selTime = sharedPreferences.getString("Minute", null)!!.toInt()
         val optionOn:Boolean = sharedPreferences.getBoolean("Button_On", false)
         val optionOff:Boolean = sharedPreferences.getBoolean("Button_Off", false)
+
+        val difTime = ((currentTime - selTime) * 60 * 1000).toString()
+
         var database = FirebaseDatabase.getInstance().reference
 
-        var getsec:Int? = (getmin!!.toInt() - minnow) * 60000
-
-        Timer().schedule(getsec!!.toLong()){
+        Timer().schedule(difTime.toLong()){
             Looper.prepare()
             if(optionOn == true && optionOff == false){
                 database.child("PI_01_CONTROL").child("led").setValue("1")
+
+                light.option = "Auto On"
+                dataSource.insert(light)
+
             }else {
                 Log.i("testing", "off")
                 database.child("PI_01_CONTROL").child("led").setValue("0")
-            }
 
+                light.option = "Auto Off"
+                dataSource.insert(light)
+            }
+            Toast.makeText(activity, "Processing ... ", Toast.LENGTH_LONG).show()
         }
 
-//        val currentTime = SimpleDateFormat("mm", Locale.getDefault()).format(Date())!!.toInt()
-//        val selTime = sharedPreferences.getString("Minute", null)!!.toInt()
-//
-//
-//        val difTime = ((currentTime - selTime) * 60 * 1000).toString()
-//
-//
-//
-//        Timer().schedule(difTime.toLong()){
-//            Looper.prepare()
-//            if(optionOn == true && optionOff == false){
-//                database.child("PI_01_CONTROL").child("led").setValue("1")
-//            }else {
-//                Log.i("testing", "off")
-//                database.child("PI_01_CONTROL").child("led").setValue("0")
-//            }
-//
-//        }
+
+
+
+
 
 //        Log.i("testing", sharedPreferences.getBoolean("Button_On", false).toString())
 //        Log.i("testing", sharedPreferences.getBoolean("Button_Off", false).toString())
