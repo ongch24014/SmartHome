@@ -50,6 +50,7 @@ class DoorScenarioFragment : Fragment() {
             var database = FirebaseDatabase.getInstance().reference
 
             database.child("PI_01_CONTROL").child("camera").setValue("1")
+            database.child("PI_01_CONTROL").child("buzzer").setValue("1")
 
             var year:Int
             var month:Int
@@ -91,6 +92,7 @@ class DoorScenarioFragment : Fragment() {
                 Looper.prepare()
                 Log.d("Value",full)
                 database.child("PI_01_CONTROL").child("camera").setValue("0")
+                database.child("PI_01_CONTROL").child("buzzer").setValue("0")
 
                 handler.postDelayed(showSuccessToast,1500)
 
@@ -150,7 +152,13 @@ class DoorScenarioFragment : Fragment() {
                         minute = minute + 1
                     }
 
-                    else if (second < 0){
+                    else if (second == -10){
+                        minute = minute - 1
+                        second = 50
+                    }
+
+                    else if (second == -20){
+                        minute = minute - 1
                         second = 0
                     }
 

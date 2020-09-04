@@ -266,6 +266,7 @@ class DoorFragment : Fragment() {
                 Toast.makeText(this.context, "Alarm triggered", Toast.LENGTH_SHORT).show()
                 database.child("PI_01_CONTROL").child("lcdtext").setValue("= Unauthorized =")
                 database.child("PI_01_CONTROL").child("buzzer").setValue("1")
+                database.child("PI_01_CONTROL").child("led").setValue("1")
 
                 val handler = Handler()
                 handler.postDelayed(object : Runnable {
@@ -293,6 +294,16 @@ class DoorFragment : Fragment() {
                             if(second == 60){
                                 second = 0
                                 minute = minute + 1
+                            }
+
+                            else if (second == -10){
+                                minute = minute - 1
+                                second = 50
+                            }
+
+                            else if (second == -20){
+                                minute = minute - 1
+                                second = 0
                             }
 
                             var child1 = "PI_01_" + year + String.format("%02d",month) + String.format("%02d",day)
@@ -327,7 +338,7 @@ class DoorFragment : Fragment() {
                     }
                 }, 10000)
 
-                Timer().schedule(5000){
+                Timer().schedule(30000){
                     Looper.prepare()
                     database.child("PI_01_CONTROL").child("buzzer").setValue("0")
                 }
@@ -337,8 +348,9 @@ class DoorFragment : Fragment() {
                 Toast.makeText(this.context, "Alarm triggered, 911 called", Toast.LENGTH_SHORT).show()
                 database.child("PI_01_CONTROL").child("lcdtext").setValue("Calling 911...  ")
                 database.child("PI_01_CONTROL").child("buzzer").setValue("1")
+                database.child("PI_01_CONTROL").child("led").setValue("1")
 
-                Timer().schedule(5000){
+                Timer().schedule(30000){
                     Looper.prepare()
                     database.child("PI_01_CONTROL").child("buzzer").setValue("0")
                 }
@@ -347,6 +359,8 @@ class DoorFragment : Fragment() {
             builder.setNeutralButton("Cancel") { dialog, which ->
                 Toast.makeText(this.context, "Alert Cancelled", Toast.LENGTH_SHORT).show()
                 database.child("PI_01_CONTROL").child("lcdtext").setValue("=App is running=")
+                database.child("PI_01_CONTROL").child("buzzer").setValue("0")
+                database.child("PI_01_CONTROL").child("led").setValue("0")
             }
 
             val alertDialog = builder.create()
