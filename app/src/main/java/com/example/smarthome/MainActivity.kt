@@ -83,7 +83,7 @@ class MainActivity : AppCompatActivity() {
 
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
                         val commonResource = dataSnapshot.getValue(CommonResourcesData::class.java)
-                        Log.d("Value",commonResource!!.ultra)
+                        //Log.d("Value",commonResource!!.ultra)
                         val ultra:String = commonResource!!.ultra
 
                         if (ultra.toInt() > 494){

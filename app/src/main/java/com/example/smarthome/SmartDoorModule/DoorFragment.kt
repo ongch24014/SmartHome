@@ -3,6 +3,7 @@ package com.example.smarthome.SmartDoorModule
 
 import android.app.AlertDialog
 import android.os.Bundle
+import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -19,6 +20,7 @@ import com.example.potensituitionapp.database.Door
 import com.example.potensituitionapp.database.DoorLock
 import com.example.potensituitionapp.database.DoorUnlock
 import com.example.smarthome.CommonResource
+import com.example.smarthome.CommonResourcesData
 import com.example.smarthome.MainActivity
 import com.example.smarthome.MainActivity.Companion.bellRing
 import com.example.smarthome.R
@@ -229,6 +231,8 @@ class DoorFragment : Fragment() {
         }
 
         binding.btnAlert.setOnClickListener { v: View? ->
+            var buzz: Boolean = true;
+            var count:Int = 0;
             var database = FirebaseDatabase.getInstance().reference
 
             val builder = AlertDialog.Builder(this.context)
@@ -241,11 +245,70 @@ class DoorFragment : Fragment() {
                 database.child("PI_01_CONTROL").child("lcdtext").setValue("= Unauthorized =")
                 database.child("PI_01_CONTROL").child("buzzer").setValue("1")
 
+                val handler = Handler()
+                handler.postDelayed(object : Runnable {
+                    override fun run() {
+
+                        handler.postDelayed(this, 10000)
+
+                        if(count < 5){
+                            var year:Int
+                            var month:Int
+                            var day:Int
+                            var hour:Int
+                            var minute:Int
+                            var second:Int
+                            var full:String
+                            second = (((Calendar.getInstance().get(Calendar.SECOND) / 10) + 1) * 10)
+                            second = second - 10
+
+                            year = Calendar.getInstance().get(Calendar.YEAR)
+                            month = Calendar.getInstance().get(Calendar.MONTH) + 1
+                            day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
+                            hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
+                            minute = Calendar.getInstance().get(Calendar.MINUTE)
+
+                            if(second == 60){
+                                second = 0
+                                minute = minute + 1
+                            }
+
+                            var child1 = "PI_01_" + year + String.format("%02d",month) + String.format("%02d",day)
+                            var child2 = String.format("%02d",hour)
+                            var child3 = String.format("%02d",minute) + String.format("%02d",second)
+
+
+                            var database = FirebaseDatabase.getInstance().reference
+
+                            database.child(child1).child(child2).child(child3).addListenerForSingleValueEvent(object :
+                                ValueEventListener {
+                                override fun onCancelled(p0: DatabaseError) {
+                                }
+
+                                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                                    val commonResource = dataSnapshot.getValue(CommonResourcesData::class.java)
+                                    Log.d("Value","Sound" + commonResource!!.sound)
+
+                                }
+
+                            })
+
+                            count++
+                        }
+
+                        else{
+
+                        }
+
+
+
+                    }
+                }, 10000)
+
                 Timer().schedule(5000){
                     Looper.prepare()
                     database.child("PI_01_CONTROL").child("buzzer").setValue("0")
                 }
-
             }
 
             builder.setNegativeButton("Alarm and call 911") { dialog, which ->
