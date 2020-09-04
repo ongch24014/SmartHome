@@ -12,7 +12,9 @@ import com.example.smarthome.databinding.FragmentOpenCloseLightBinding
 import android.widget.CompoundButton
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import com.example.potensituitionapp.database.Lights
 import com.example.smarthome.R
+import com.example.smarthome.database.SmartHomeDatabase
 import com.example.smarthome.databinding.FragmentOpenCloseLightBindingImpl
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.fragment_open_close_light.view.*
@@ -32,16 +34,30 @@ class OpenCloseLightFragment : Fragment() {
             R.layout.fragment_open_close_light,container,false)
 
         binding.btnSetting.setOnClickListener{view : View ->
-            Log.i("test","123")
+            Log.i("testing","123")
             view.findNavController().navigate(R.id.action_openCloseLightFragment_to_lightSettingFragment)
         }
 
         var database = FirebaseDatabase.getInstance().reference
+        val application = requireNotNull(this.activity).application
+        val dataSource = SmartHomeDatabase.getInstance(application).lightsDatabaseDao
+        var count = 0
 
         binding.switch1.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { switch1, isChecked ->
             if (isChecked){
                 binding.imgLight.setImageResource(R.drawable.ic_active_light)
                 database.child("PI_01_CONTROL").child("led").setValue("1")
+                count ++
+                Log.i("count", count.toString())
+                var light = Lights()
+
+                light.count = count.toString()
+                dataSource.insert(light)
+
+                var count1:Int = dataSource.getCount() //count stored inside count1
+
+                Log.d("Value",count1.toString())
+
             } else {
                 binding.imgLight.setImageResource(R.drawable.ic_inactive_light)
                 database.child("PI_01_CONTROL").child("led").setValue("0")
@@ -51,6 +67,8 @@ class OpenCloseLightFragment : Fragment() {
         binding.switch2.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { switch2, isChecked ->
             if (isChecked){
                 binding.imgLight2.setImageResource(R.drawable.ic_active_light)
+                count ++
+                Log.i("count", count.toString())
             } else {
                 binding.imgLight2.setImageResource(R.drawable.ic_inactive_light)
             }
