@@ -32,5 +32,6 @@ data class Lights (
 
     @ColumnInfo(name = "fulldate")
     var fulldate: String = ""
+
 )
 
