@@ -47,16 +47,16 @@ class OpenCloseLightFragment : Fragment() {
             if (isChecked){
                 binding.imgLight.setImageResource(R.drawable.ic_active_light)
                 database.child("PI_01_CONTROL").child("led").setValue("1")
+
                 count ++
-                Log.i("count", count.toString())
-                var light = Lights()
+                Log.i("count1", count.toString())
 
-                light.count = count.toString()
-                dataSource.insert(light)
-
-                var count1:Int = dataSource.getCount() //count stored inside count1
-
-                Log.d("Value",count1.toString())
+//                var light = Lights()
+//                light.count = count
+//                dataSource.insert(light)
+//
+//                var count1:Int = dataSource.getCount() //count stored inside count1
+//                Log.d("Value",count1.toString())
 
             } else {
                 binding.imgLight.setImageResource(R.drawable.ic_inactive_light)
@@ -68,9 +68,19 @@ class OpenCloseLightFragment : Fragment() {
             if (isChecked){
                 binding.imgLight2.setImageResource(R.drawable.ic_active_light)
                 count ++
-                Log.i("count", count.toString())
+                Log.i("count2", count.toString())
             } else {
                 binding.imgLight2.setImageResource(R.drawable.ic_inactive_light)
+            }
+        })
+
+        binding.switch3.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { switch3, isChecked ->
+            if (isChecked){
+                binding.imgLight3.setImageResource(R.drawable.ic_active_light)
+                count ++
+                Log.i("count3", count.toString())
+            } else {
+                binding.imgLight3.setImageResource(R.drawable.ic_inactive_light)
             }
         })
 

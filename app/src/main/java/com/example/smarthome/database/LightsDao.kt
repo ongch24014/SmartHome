@@ -31,4 +31,5 @@ interface LightsDao {
 
     @Query("SELECT COUNT(*) FROM lights_table")
     fun getCount(): Int
+
 }

@@ -31,9 +31,7 @@ data class Lights (
     var option: String = "",
 
     @ColumnInfo(name = "fulldate")
-    var fulldate: String = "",
+    var fulldate: String = ""
 
-    @ColumnInfo(name = "count")
-    var count: String = ""
 )
 

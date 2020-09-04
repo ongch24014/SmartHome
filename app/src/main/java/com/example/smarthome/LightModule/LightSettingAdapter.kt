@@ -9,9 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.potensituitionapp.database.Lights
 import com.example.smarthome.R
 
-class LightSettingAdapter (private var lights:List<Lights>, var view: FragmentActivity?)
-    : RecyclerView.Adapter<LightSettingAdapter.ViewHolder>()
-{
+class LightSettingAdapter (private var lights:List<Lights>, var view: FragmentActivity?) :
+    RecyclerView.Adapter<LightSettingAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -22,8 +21,8 @@ class LightSettingAdapter (private var lights:List<Lights>, var view: FragmentAc
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_set_time, parent, false)
-        return ViewHolder(view)
+        val v = LayoutInflater.from(parent.context).inflate(R.layout.item_set_time, parent, false)
+        return ViewHolder(v)
     }
 
     override fun getItemCount(): Int {
@@ -32,7 +31,7 @@ class LightSettingAdapter (private var lights:List<Lights>, var view: FragmentAc
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.txtDateTime.text = lights[position].day + "/" + lights[position].month + "/" + lights[position].year + " " + lights[position].time
-        holder.txtTimeSet.text = lights[position].selectedTime
+        holder.txtTimeSet.text = "Selected Time: " + lights[position].selectedTime
         holder.txtOption.text = lights[position].option
 
     }

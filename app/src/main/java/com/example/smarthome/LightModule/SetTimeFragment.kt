@@ -139,24 +139,25 @@ class SetTimeFragment : Fragment() {
 
         var getsec:Int? = (getmin!!.toInt() - minnow) * 60000
 
-        val application = requireNotNull(this.activity).application
-        val dataSource = SmartHomeDatabase.getInstance(application).lightsDatabaseDao
-        var light = Lights()
 
         Timer().schedule(getsec!!.toLong()){
             Looper.prepare()
             if(optionOn == true && optionOff == false){
                 database.child("PI_01_CONTROL").child("led").setValue("1")
-                light.option = "Auto On"
-                light.selectedTime = getmin
-                dataSource.insert(light)
+
+//                light.day = day.toString()
+//                light.month = month.toString()
+//                light.year = year.toString()
+//                light.time = hour.toString() + ":" + minute.toString()
+//                light.option = "Auto On"
+//                light.selectedTime = getmin
+//                dataSource.insert(light)
                 //Toast.makeText(activity?.getApplicationContext(),"Yes updated",Toast.LENGTH_LONG).show()
+
             }else {
                 Log.i("testing", "off")
                 database.child("PI_01_CONTROL").child("led").setValue("0")
-                light.option = "Auto Off"
-                light.selectedTime = getmin
-                dataSource.insert(light)
+
             }
 
         }
@@ -168,9 +169,12 @@ class SetTimeFragment : Fragment() {
         var day:Int
         var hour:Int
         var minute:Int
+     //   var getmin:String? = sharedPreferences.getString("STRING_KEY", null)
+        val optionOn:Boolean = sharedPreferences.getBoolean("Button_On", false)
+        val optionOff:Boolean = sharedPreferences.getBoolean("Button_Off", false)
 
         year = Calendar.getInstance().get(Calendar.YEAR)
-        month = Calendar.getInstance().get(Calendar.MONTH)
+        month = Calendar.getInstance().get(Calendar.MONTH) + 1
         day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
         hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
         minute = Calendar.getInstance().get(Calendar.MINUTE)
@@ -182,7 +186,13 @@ class SetTimeFragment : Fragment() {
         light.day = day.toString()
         light.month = month.toString()
         light.year = year.toString()
-        light.time = hour.toString() + ":" + minute.toString()
+        light.time = String.format("%02d",hour) + ":" + String.format("%02d",minute)
+        if(optionOn == true && optionOff == false){
+            light.option = "Auto On"
+        } else {
+            light.option = "Auto Off"
+        }
+        light.selectedTime = sharedPreferences.getString("STRING_KEY", null).toString()
 
         dataSource.insert(light)
 
