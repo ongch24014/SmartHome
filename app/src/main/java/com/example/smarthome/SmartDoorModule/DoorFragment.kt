@@ -287,7 +287,7 @@ class DoorFragment : Fragment() {
 
                                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                                     val commonResource = dataSnapshot.getValue(CommonResourcesData::class.java)
-                                    Log.d("Value","Sound" + commonResource!!.sound)
+                                    Log.d("Value","Sound Sensor = " + commonResource?.sound)
 
                                 }
 

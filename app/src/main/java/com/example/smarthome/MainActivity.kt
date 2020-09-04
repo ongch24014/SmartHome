@@ -84,12 +84,20 @@ class MainActivity : AppCompatActivity() {
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
                         val commonResource = dataSnapshot.getValue(CommonResourcesData::class.java)
                         //Log.d("Value",commonResource!!.ultra)
-                        val ultra:String = commonResource!!.ultra
+                        val ultra:String? = commonResource?.ultra
 
-                        if (ultra.toInt() > 494){
-                            val toast1 = Toast.makeText(applicationContext, "check check", Toast.LENGTH_LONG)
-                            toast1.show()
+                        if(ultra.equals(null)){
+
                         }
+
+                        else{
+                            if (ultra!!.toInt() > 494){
+                                val toast1 = Toast.makeText(applicationContext, "check check", Toast.LENGTH_LONG)
+                                toast1.show()
+                            }
+                        }
+
+
                     }
 
                 })
