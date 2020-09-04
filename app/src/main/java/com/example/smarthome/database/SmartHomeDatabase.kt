@@ -15,9 +15,9 @@ abstract class SmartHomeDatabase : RoomDatabase() {
     abstract val doorUnlockDatabaseDao: DoorUnlockDao
 
     abstract val lightsDatabaseDao: LightsDao
-    abstract val lights1DatabaseDao: LightsDao
-    abstract val lights2DatabaseDao: LightsDao
-    abstract val lights3DatabaseDao: LightsDao
+    abstract val lights1DatabaseDao: Lights1Dao
+    abstract val lights2DatabaseDao: Lights2Dao
+    abstract val lights3DatabaseDao: Lights3Dao
     abstract val temperatureDatabaseDao: TemperatureDao
 
 
