@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         var bellRing = ""
+        var doorStatus = "Locked"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,6 +38,7 @@ class MainActivity : AppCompatActivity() {
         sharedPreferences = getPreferences(Context.MODE_PRIVATE)
 
         bellRing = sharedPreferences.getString("bellRing","").toString()
+        doorStatus = sharedPreferences.getString("doorStatus","").toString()
 
         var yesno:Boolean = true;
 
@@ -131,6 +133,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         bellRing = sharedPreferences.getString("bellRing","").toString()
+        doorStatus = sharedPreferences.getString("doorStatus","").toString()
 
         super.onResume()
     }
@@ -138,6 +141,7 @@ class MainActivity : AppCompatActivity() {
     override fun onPause() {
         with(sharedPreferences.edit()){
             putString("bellRing", bellRing)
+            putString("doorStatus", doorStatus)
             commit()
         }
         super.onPause()
@@ -146,6 +150,7 @@ class MainActivity : AppCompatActivity() {
     override fun onStop() {
         with(sharedPreferences.edit()){
             putString("bellRing", bellRing)
+            putString("doorStatus", doorStatus)
             commit()
         }
         super.onStop()

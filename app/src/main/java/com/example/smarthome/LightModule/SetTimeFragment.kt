@@ -64,20 +64,20 @@ class SetTimeFragment : Fragment() {
 
             val parser = SimpleDateFormat("H:m")
             val formatter = SimpleDateFormat("HH:mm")
-            val formatter2 = SimpleDateFormat("mm")
+//            val formatter2 = SimpleDateFormat("HH:mm")
             val selectedTime = formatter.format(parser.parse("$hourOfDay:$minute")!!)
 
            // val date = simpleDateFormat.format(selectedTime)
             binding.txtUserSelTime.text = selectedTime + " $AM_PM"
 
             //need format to HHmm
-            val time = formatter2.format(parser.parse("$minute")!!)
+            //val time = formatter2.format(parser.parse("$minute")!!)
 
             //save data
             val editor:SharedPreferences.Editor = sharedPreferences.edit()
             editor.apply{
                 putString("STRING_KEY", selectedTime)
-                putString("Minute", time)
+                //putString("Minute", time)
             }.apply()
             Toast.makeText(
                 activity, sharedPreferences.getString("STRING_KEY", null), Toast.LENGTH_LONG
@@ -125,16 +125,16 @@ class SetTimeFragment : Fragment() {
     }
 
     private fun CompareTime() {
-        val currentTime = SimpleDateFormat("mm", Locale.getDefault()).format(Date())!!.toInt()
-        val selTime = sharedPreferences.getString("Minute", null)!!.toInt()
+        var getmin:String? = sharedPreferences.getString("STRING_KEY", null)
+        getmin = getmin?.takeLast(2)
+        var minnow = Calendar.getInstance().get(Calendar.MINUTE)
         val optionOn:Boolean = sharedPreferences.getBoolean("Button_On", false)
         val optionOff:Boolean = sharedPreferences.getBoolean("Button_Off", false)
-
-        val difTime = ((currentTime - selTime) * 60 * 1000).toString()
-
         var database = FirebaseDatabase.getInstance().reference
 
-        Timer().schedule(difTime.toLong()){
+        var getsec:Int? = (getmin!!.toInt() - minnow) * 60000
+
+        Timer().schedule(getsec!!.toLong()){
             Looper.prepare()
             if(optionOn == true && optionOff == false){
                 database.child("PI_01_CONTROL").child("led").setValue("1")
@@ -144,6 +144,25 @@ class SetTimeFragment : Fragment() {
             }
 
         }
+
+//        val currentTime = SimpleDateFormat("mm", Locale.getDefault()).format(Date())!!.toInt()
+//        val selTime = sharedPreferences.getString("Minute", null)!!.toInt()
+//
+//
+//        val difTime = ((currentTime - selTime) * 60 * 1000).toString()
+//
+//
+//
+//        Timer().schedule(difTime.toLong()){
+//            Looper.prepare()
+//            if(optionOn == true && optionOff == false){
+//                database.child("PI_01_CONTROL").child("led").setValue("1")
+//            }else {
+//                Log.i("testing", "off")
+//                database.child("PI_01_CONTROL").child("led").setValue("0")
+//            }
+//
+//        }
 
 //        Log.i("testing", sharedPreferences.getBoolean("Button_On", false).toString())
 //        Log.i("testing", sharedPreferences.getBoolean("Button_Off", false).toString())

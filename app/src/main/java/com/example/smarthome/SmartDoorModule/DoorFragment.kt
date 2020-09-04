@@ -23,6 +23,7 @@ import com.example.smarthome.CommonResource
 import com.example.smarthome.CommonResourcesData
 import com.example.smarthome.MainActivity
 import com.example.smarthome.MainActivity.Companion.bellRing
+import com.example.smarthome.MainActivity.Companion.doorStatus
 import com.example.smarthome.R
 import com.example.smarthome.database.SmartHomeDatabase
 import com.example.smarthome.databinding.FragmentDoorBinding
@@ -49,12 +50,28 @@ class DoorFragment : Fragment() {
         val binding = DataBindingUtil.inflate<FragmentDoorBinding>(inflater,
             R.layout.fragment_door,container,false)
 
+        if(doorStatus.equals("Locked")){
+            binding.btnDoor.setBackgroundResource(R.drawable.round_button_red)
+            binding.btnDoor.setImageResource(R.drawable.door_locked)
+            binding.txtDoorStatus.text = "  DOOR LOCKED"
+            binding.txtDoorStatus.setTextColor("#9B1252".toColorInt())
+        }
+
+        else{
+            binding.btnDoor.setBackgroundResource(R.drawable.round_button_green)
+            binding.btnDoor.setImageResource(R.drawable.door_unlock)
+            binding.txtDoorStatus.text = "DOOR UNLOCKED"
+            binding.txtDoorStatus.setTextColor("#129B19".toColorInt())
+        }
+
+
     binding.btnDoor.setOnClickListener {
         if(txtDoorStatus.text.equals("DOOR UNLOCKED")){
             btnDoor.setBackgroundResource(R.drawable.round_button_red)
             btnDoor.setImageResource(R.drawable.door_locked)
             txtDoorStatus.text = "  DOOR LOCKED"
-            txtDoorStatus.setTextColor("#9B1252".toColorInt()) //hey
+            txtDoorStatus.setTextColor("#9B1252".toColorInt())
+            doorStatus = "Locked"
 
             var database = FirebaseDatabase.getInstance().reference
 
@@ -69,6 +86,8 @@ class DoorFragment : Fragment() {
                 }
 
             })
+
+            database.child("PI_01_CONTROL").child("lcdtext").setValue("Door Locked...  ")
 
             var year:Int
             var month:Int
@@ -127,10 +146,13 @@ class DoorFragment : Fragment() {
             btnDoor.setImageResource(R.drawable.door_unlock)
             txtDoorStatus.text = "DOOR UNLOCKED"
             txtDoorStatus.setTextColor("#129B19".toColorInt())
+            doorStatus = "Unlocked"
 
             var database = FirebaseDatabase.getInstance().reference
 
             database.child("PI_01_CONTROL").child("led").setValue("0")
+
+            database.child("PI_01_CONTROL").child("lcdtext").setValue("Door Unlocked...")
 
             var year:Int
             var month:Int
