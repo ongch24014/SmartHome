@@ -108,9 +108,10 @@ class OpenCloseLightFragment : Fragment() {
         binding.btnCloseAll.setOnClickListener{
             binding.imgLight.setImageResource(R.drawable.ic_inactive_light)
             binding.imgLight2.setImageResource(R.drawable.ic_inactive_light)
+            binding.imgLight3.setImageResource(R.drawable.ic_inactive_light)
             binding.switch1.setChecked(false)
             binding.switch2.setChecked(false)
-
+            binding.switch3.setChecked(false)
         }
 
         return binding.root
