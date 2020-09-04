@@ -10,6 +10,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.example.smarthome.databinding.FragmentLoginBinding
 import com.example.smarthome.databinding.FragmentTempBinding
+import android.widget.TextView
+import androidx.annotation.ContentView
+import androidx.navigation.fragment.findNavController
+import kotlinx.android.synthetic.*
+
+import java.text.SimpleDateFormat
+import java.util.*
 
 /**
  * A simple [Fragment] subclass.
@@ -29,7 +36,11 @@ class TempFragment : Fragment() {
 
 
         return binding.root
+
+
     }
 
 
 }
+
+
