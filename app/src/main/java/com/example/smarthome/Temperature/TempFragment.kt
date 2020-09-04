@@ -1,4 +1,4 @@
-package com.example.smarthome
+package com.example.smarthome.Temperature
 
 
 import android.os.Bundle
@@ -8,15 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
-import com.example.smarthome.databinding.FragmentLoginBinding
 import com.example.smarthome.databinding.FragmentTempBinding
-import android.widget.TextView
-import androidx.annotation.ContentView
-import androidx.navigation.fragment.findNavController
-import kotlinx.android.synthetic.*
-
-import java.text.SimpleDateFormat
-import java.util.*
+import com.example.smarthome.R
 
 /**
  * A simple [Fragment] subclass.
