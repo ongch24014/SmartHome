@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Looper
+import android.preference.PreferenceManager
 import android.text.SpannableStringBuilder
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -27,6 +28,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.fragment_set_time.*
 import java.text.SimpleDateFormat
+import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.concurrent.schedule
@@ -61,75 +63,117 @@ class SetTimeFragment : Fragment() {
             } else
                 AM_PM = "PM"
 
-            val pattern = "HH:mm"
-            val simpleDateFormat = SimpleDateFormat(pattern)
-
             val parser = SimpleDateFormat("H:m")
             val formatter = SimpleDateFormat("HH:mm")
-//            val formatter2 = SimpleDateFormat("HH:mm")
             val selectedTime = formatter.format(parser.parse("$hourOfDay:$minute")!!)
-
-           // val date = simpleDateFormat.format(selectedTime)
             binding.txtUserSelTime.text = selectedTime + " $AM_PM"
 
-            //need format to HHmm
-            //val time = formatter2.format(parser.parse("$minute")!!)
 
             //save data
             val editor:SharedPreferences.Editor = sharedPreferences.edit()
             editor.apply{
                 putString("STRING_KEY", selectedTime)
-                //putString("Minute", time)
             }.apply()
             Toast.makeText(
                 activity, sharedPreferences.getString("STRING_KEY", null), Toast.LENGTH_LONG
             ).show()
-            Log.i("test",sharedPreferences.getString("STRING_KEY", null))
         })
 
-        //if (binding.btnAutoOn.isClickable){
-            binding.btnAutoOn.setOnClickListener {
-                val selectedOption = SpannableStringBuilder().append("Turn ").bold {append("ON")}.append(" the light.").toString()
-                binding.txtUserSelOption.text = selectedOption
+        binding.btnAutoOn.setOnClickListener {
+            val selectedOption = SpannableStringBuilder().append("Turn ").bold {append("ON")}.append(" the light.").toString()
+            binding.txtUserSelOption.text = selectedOption
 
-                //save data
-                val editor:SharedPreferences.Editor = sharedPreferences.edit()
-                editor.apply{
-                    putBoolean("Button_On", true)
-                    putBoolean("Button_Off", false)
-                }.apply()
-//                Toast.makeText(
-//                    activity, sharedPreferences.getBoolean("Button_On", false).toString(), Toast.LENGTH_LONG
-//                ).show()
-            }
-        //}
-        //if (binding.btnAutoOff.isClickable){
-            binding.btnAutoOff.setOnClickListener {
-                binding.txtUserSelOption.text = SpannableStringBuilder().append("Turn ").bold {append("OFF")}.append(" the light.")
+            //save data
+            val editor:SharedPreferences.Editor = sharedPreferences.edit()
+            editor.apply{
+                putBoolean("Button_On", true)
+                putBoolean("Button_Off", false)
+            }.apply()
+        }
 
-                //save data
-                val editor:SharedPreferences.Editor = sharedPreferences.edit()
-                editor.apply{
-                    putBoolean("Button_Off", true)
-                    putBoolean("Button_On", false)
-                }.apply()
+        binding.btnAutoOff.setOnClickListener {
+            binding.txtUserSelOption.text = SpannableStringBuilder().append("Turn ").bold {append("OFF")}.append(" the light.")
 
-            }
-        //}
+            //save data
+            val editor:SharedPreferences.Editor = sharedPreferences.edit()
+            editor.apply{
+                putBoolean("Button_Off", true)
+                putBoolean("Button_On", false)
+            }.apply()
 
-
-
+        }
 
         binding.btnSet.setOnClickListener {
-            updateDBCurrentDate()
             compareTime()
+            updateDBCurrentDate()
             Toast.makeText(activity?.getApplicationContext(),"Add successful",Toast.LENGTH_SHORT).show();
             view!!.findNavController().navigate(R.id.action_setTimeFragment_to_lightSettingFragment)
         }
+
         return binding.root
     }
 
+    private fun validateTime():Boolean{
+        var time:String? = sharedPreferences.getString("STRING_KEY", null)
+
+        var selecthour = time!!.take(2)
+        var selmin = time!!.takeLast(2)
+        var hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
+        var minute = Calendar.getInstance().get(Calendar.MINUTE)
+
+        var hournow = String.format("%02d",hour)
+        var minnow = String.format("%02d",minute)
+
+        if (txtUserSelTime.text == "selected time") {
+            txtError1.visibility = View.VISIBLE
+            return false
+        } else if (txtUserSelTime.text != "selected time"){
+            if (selecthour < hournow){
+                txtError1.visibility = View.VISIBLE
+                txtError1.setText("Time before current time is not allowed.")
+                return false
+            }
+            else if (selecthour == hournow){
+                Log.i("time",minnow)
+                Log.i("time",selmin)
+                if (selmin < minnow){
+                    txtError1.visibility = View.VISIBLE
+                    txtError1.setText("Time before current time is not allowed.")
+                    return false
+                } else {
+                    txtError1.visibility = View.GONE
+                    return true
+                }
+            }
+            else{
+                txtError1.visibility = View.GONE
+                return true
+            }
+
+        }
+        else {
+            txtError1.visibility = View.GONE
+            return true
+        }
+    }
+
+    private fun validateOption():Boolean {
+         if (txtUserSelOption.text == "selected option"){
+            txtError2.visibility = View.VISIBLE
+             return false
+         }
+         else {
+             txtError2.visibility = View.GONE
+             return true
+         }
+
+    }
+
     private fun compareTime() {
+        if (!validateTime() || !validateOption()){
+            return
+        }
+
         var getmin:String? = sharedPreferences.getString("STRING_KEY", null)
         getmin = getmin?.takeLast(2)
         var minnow = Calendar.getInstance().get(Calendar.MINUTE)
@@ -145,15 +189,6 @@ class SetTimeFragment : Fragment() {
             if(optionOn == true && optionOff == false){
                 database.child("PI_01_CONTROL").child("led").setValue("1")
 
-//                light.day = day.toString()
-//                light.month = month.toString()
-//                light.year = year.toString()
-//                light.time = hour.toString() + ":" + minute.toString()
-//                light.option = "Auto On"
-//                light.selectedTime = getmin
-//                dataSource.insert(light)
-                //Toast.makeText(activity?.getApplicationContext(),"Yes updated",Toast.LENGTH_LONG).show()
-
             }else {
                 Log.i("testing", "off")
                 database.child("PI_01_CONTROL").child("led").setValue("0")
@@ -164,12 +199,17 @@ class SetTimeFragment : Fragment() {
     }
 
     private fun updateDBCurrentDate() {
+        if (!validateTime() || !validateOption()){
+            return
+        }
+
         var year:Int
         var month:Int
         var day:Int
         var hour:Int
         var minute:Int
-     //   var getmin:String? = sharedPreferences.getString("STRING_KEY", null)
+        var AM_PM = ""
+
         val optionOn:Boolean = sharedPreferences.getBoolean("Button_On", false)
         val optionOff:Boolean = sharedPreferences.getBoolean("Button_Off", false)
 
@@ -179,6 +219,11 @@ class SetTimeFragment : Fragment() {
         hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
         minute = Calendar.getInstance().get(Calendar.MINUTE)
 
+        if (hour<12){
+            AM_PM = "AM"
+        } else
+            AM_PM = "PM"
+
         val application = requireNotNull(this.activity).application
         val dataSource = SmartHomeDatabase.getInstance(application).lightsDatabaseDao
         var light = Lights()
@@ -186,22 +231,17 @@ class SetTimeFragment : Fragment() {
         light.day = day.toString()
         light.month = month.toString()
         light.year = year.toString()
-        light.time = String.format("%02d",hour) + ":" + String.format("%02d",minute)
+        light.time = String.format("%02d",hour) + ":" + String.format("%02d",minute) + " " + AM_PM
         if(optionOn == true && optionOff == false){
             light.option = "Auto On"
         } else {
             light.option = "Auto Off"
         }
+        Log.i("test", txtUserSelOption.text.toString())
         light.selectedTime = sharedPreferences.getString("STRING_KEY", null).toString()
 
         dataSource.insert(light)
 
     }
 
-//    private fun loadData(){
-//        //loadData
-//        val savedString:String? = sharedPreferences.getString("STRING_KEY", null)
-//        //Log.i("testing", sharedPreferences.getString("STRING_KEY", null))
-//
-//    }
 }

@@ -9,7 +9,7 @@
     <string name="_3_devices">3 Devices</string>
     <string name="light_controller">Light Controller</string>
     <string name="door">DOOR</string>
-    <string name="light">LIGHT 1</string>
+    <string name="light">LIGHT</string>
     <string name="temperature">TEMPERATURE</string>
     <string name="analysis">ANALYSIS</string>
 </resources>

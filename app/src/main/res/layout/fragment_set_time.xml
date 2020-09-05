@@ -73,6 +73,23 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/timePicker1" />
 
+        <TextView
+            android:id="@+id/txtError1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:padding="8dp"
+            android:text="Please select the time."
+            android:visibility="gone"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textColor="@android:color/holo_red_dark"
+            android:background="@drawable/error_box"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtUserSelTime" />
+
         <Button
             android:id="@+id/btnAutoOn"
             android:layout_width="wrap_content"
@@ -81,9 +98,9 @@
             android:layout_marginEnd="8dp"
             android:background="@color/lightGreen"
             android:padding="8dp"
-            android:text="Auto On all"
+            android:text="Auto On"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtUserSelTime" />
+            app:layout_constraintTop_toBottomOf="@+id/txtError1" />
 
         <Button
             android:id="@+id/btnAutoOff"
@@ -93,9 +110,9 @@
             android:layout_marginEnd="8dp"
             android:background="@color/lightPink"
             android:padding="8dp"
-            android:text="Auto Off all"
+            android:text="Auto Off"
             app:layout_constraintEnd_toStartOf="@+id/btnAutoOn"
-            app:layout_constraintTop_toBottomOf="@+id/txtUserSelTime" />
+            app:layout_constraintTop_toBottomOf="@+id/txtError1" />
 
         <TextView
             android:id="@+id/txtUserSelOption"
@@ -112,6 +129,23 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnAutoOff" />
 
+        <TextView
+            android:id="@+id/txtError2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:padding="8dp"
+            android:text="Please select the option."
+            android:visibility="gone"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textColor="@android:color/holo_red_dark"
+            android:background="@drawable/error_box"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtUserSelOption" />
+
         <Button
             android:id="@+id/btnSet"
             android:layout_width="wrap_content"
@@ -123,7 +157,7 @@
             android:text="Add"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtUserSelOption" />
+            app:layout_constraintTop_toBottomOf="@+id/txtError2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

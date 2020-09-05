@@ -1,5 +1,6 @@
 package com.example.smarthome.LightModule
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,6 +34,12 @@ class LightSettingAdapter (private var lights:List<Lights>, var view: FragmentAc
         holder.txtDateTime.text = lights[position].day + "/" + lights[position].month + "/" + lights[position].year + " " + lights[position].time
         holder.txtTimeSet.text = "Selected Time: " + lights[position].selectedTime
         holder.txtOption.text = lights[position].option
+
+        if (lights[position].option == "Auto On") {
+            holder.txtOption.setTextColor(Color.parseColor("#42f569"))
+        } else {
+            holder.txtOption.setTextColor(Color.parseColor("#f52c2c"))
+        }
 
     }
 
