@@ -30,21 +30,21 @@ class AnalysisTemperatureFragment : Fragment() {
 
         val application = requireNotNull(this.activity).application
         val dataSource1 = SmartHomeDatabase.getInstance(application).temperatureDatabaseDao
-
+        val dataSource2 = SmartHomeDatabase.getInstance(application).temperatur2eDatabaseDao
 
 
         var countT1:Int = dataSource1.getCount() //count stored inside countCap
         var avgT1:Double = dataSource1.getTempAvg()
-       // var countT2:Int = dataSource2.getCount() //count stored inside countCap
-       // var avgT2:Double = dataSource2.getTempAvg()
+        var countT2:Int = dataSource2.getCount() //count stored inside countCap
+        var avgT2:Double = dataSource2.getTempAvg()
 
         Log.d("Value",countT1.toString())
         Log.d("Value",avgT1.toString())
 
         binding.txtTemp1.setText("Number of times temperature in living room has been checked: " + countT1 );
         binding.txtTemp2.setText("Average Temperature in living room:"+ avgT1 );
-        binding.txtTemp3.setText("Number of times temperature in bedroom has been checked: " + countT1 );
-        binding.txtTemp4.setText("Average Temperature in bedroom:"+ avgT1 );
+        binding.txtTemp3.setText("Number of times temperature in bedroom has been checked: " + countT2 );
+        binding.txtTemp4.setText("Average Temperature in bedroom:"+ avgT2 );
 
 
 
