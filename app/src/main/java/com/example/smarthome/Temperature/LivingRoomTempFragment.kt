@@ -8,8 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import com.example.potensituitionapp.database.Temperature
+import com.example.potensituitionapp.database.Temperature2
 import com.example.smarthome.CommonResourcesData
 import com.example.smarthome.R
+import com.example.smarthome.database.SmartHomeDatabase
 import com.example.smarthome.databinding.FragmentLivingRoomTempBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -36,7 +39,9 @@ class LivingRoomTempFragment : Fragment() {
         val binding = DataBindingUtil.inflate<FragmentLivingRoomTempBinding>(inflater,
             R.layout.fragment_living_room_temp,container,false)
 
-
+        val application = requireNotNull(this.activity).application
+        val dataSource1 = SmartHomeDatabase.getInstance(application).temperature2DatabaseDao
+        var temperature2 = Temperature2()
 
         var year:Int
         var month:Int
@@ -76,6 +81,8 @@ class LivingRoomTempFragment : Fragment() {
                 Log.d("Value",commonResource!!.tempe)
                 val tempe:String = commonResource!!.tempe
                 binding.txtTemp.text = tempe
+                temperature2.temperatureReading = tempe
+                dataSource1.insert(temperature2)
             }
         })
 

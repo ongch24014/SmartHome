@@ -84,7 +84,6 @@ class BedRoomTempFragment : Fragment() {
                 val tempe:String = commonResource!!.tempe
                 binding.txtTemp.text = tempe
                 temperature.temperatureReading = tempe
-                //temperature.temperatureID
                 dataSource1.insert(temperature)
             }
         })

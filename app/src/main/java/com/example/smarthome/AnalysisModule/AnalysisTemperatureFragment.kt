@@ -30,7 +30,7 @@ class AnalysisTemperatureFragment : Fragment() {
 
         val application = requireNotNull(this.activity).application
         val dataSource1 = SmartHomeDatabase.getInstance(application).temperatureDatabaseDao
-        val dataSource2 = SmartHomeDatabase.getInstance(application).temperatur2eDatabaseDao
+        val dataSource2 = SmartHomeDatabase.getInstance(application).temperature2DatabaseDao
 
 
         var countT1:Int = dataSource1.getCount() //count stored inside countCap
