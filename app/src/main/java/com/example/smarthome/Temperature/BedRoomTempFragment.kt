@@ -8,8 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import com.example.potensituitionapp.database.Temperature
 import com.example.smarthome.CommonResourcesData
 import com.example.smarthome.R
+import com.example.smarthome.database.SmartHomeDatabase
 import com.example.smarthome.databinding.FragmentBedroomTempBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -36,7 +38,9 @@ class BedRoomTempFragment : Fragment() {
         val binding = DataBindingUtil.inflate<FragmentBedroomTempBinding>(inflater,
             R.layout.fragment_bedroom_temp,container,false)
 
-
+        val application = requireNotNull(this.activity).application
+        val dataSource1 = SmartHomeDatabase.getInstance(application).temperatureDatabaseDao
+        var temperature = Temperature()
 
         var year:Int
         var month:Int
@@ -72,10 +76,16 @@ class BedRoomTempFragment : Fragment() {
             }
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
+
+
+
                 val commonResource = dataSnapshot.getValue(CommonResourcesData::class.java)
                 Log.d("Value",commonResource!!.tempe)
                 val tempe:String = commonResource!!.tempe
                 binding.txtTemp.text = tempe
+                temperature.temperatureReading = tempe
+                //temperature.temperatureID
+                dataSource1.insert(temperature)
             }
         })
 

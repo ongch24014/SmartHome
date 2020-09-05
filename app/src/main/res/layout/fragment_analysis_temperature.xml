@@ -83,14 +83,42 @@
                     android:layout_width="409dp"
                     android:layout_height="70dp"
                     android:background="#FDFCFC"
-                    android:text="Number of times temperature has been adjusted:"
+                    android:text="Number of times temperature in living room has been checked:"
                     android:textSize="24sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txtTemp1"
-                    app:layout_constraintVertical_bias="0.135" />
+                    app:layout_constraintVertical_bias="0.048" />
+
+                <TextView
+                    android:id="@+id/txtTemp3"
+                    android:layout_width="409dp"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="156dp"
+                    android:background="#FDFCFC"
+                    android:text="Average temperature:"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/editText3" />
+
+                <TextView
+                    android:id="@+id/txtTemp4"
+                    android:layout_width="409dp"
+                    android:layout_height="70dp"
+                    android:background="#FDFCFC"
+                    android:text="Average temperature:"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtTemp3"
+                    app:layout_constraintVertical_bias="0.428" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>

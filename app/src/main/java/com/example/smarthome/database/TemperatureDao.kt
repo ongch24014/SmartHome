@@ -29,7 +29,7 @@ interface TemperatureDao {
     @Query("SELECT * FROM temperature_table ORDER BY temperature_ID DESC")
     fun getTemperature(): List<Temperature>
 
-    @Query("SELECT COUNT(*) FROM lights_table")
+    @Query("SELECT COUNT(*) FROM temperature_table")
     fun getCount(): Int
 
     @Query("SELECT AVG(temperatureReading) FROM temperature_table ")
