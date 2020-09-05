@@ -78,7 +78,7 @@ class LivingRoomTempFragment : Fragment() {
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val commonResource = dataSnapshot.getValue(CommonResourcesData::class.java)
-                Log.d("Value",commonResource!!.tempe)
+              //  Log.d("Value",commonResource!!.tempe)
                 val tempe:String = commonResource!!.tempe
                 binding.txtTemp.text = tempe
                 temperature2.temperatureReading = tempe
