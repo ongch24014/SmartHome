@@ -105,7 +105,7 @@ class SetTimeFragment : Fragment() {
 
         binding.btnSet.setOnClickListener {
             compareTime()
-            updateDBCurrentDate()
+            // updateDBCurrentDate()
             Toast.makeText(activity?.getApplicationContext(),"Add successful",Toast.LENGTH_SHORT).show();
             view!!.findNavController().navigate(R.id.action_setTimeFragment_to_lightSettingFragment)
         }
@@ -134,8 +134,6 @@ class SetTimeFragment : Fragment() {
                 return false
             }
             else if (selecthour == hournow){
-                Log.i("time",minnow)
-                Log.i("time",selmin)
                 if (selmin < minnow){
                     txtError1.visibility = View.VISIBLE
                     txtError1.setText("Time before current time is not allowed.")
@@ -149,7 +147,6 @@ class SetTimeFragment : Fragment() {
                 txtError1.visibility = View.GONE
                 return true
             }
-
         }
         else {
             txtError1.visibility = View.GONE
@@ -170,38 +167,42 @@ class SetTimeFragment : Fragment() {
     }
 
     private fun compareTime() {
-        if (!validateTime() || !validateOption()){
-            return
-        }
+       // Log.i("test",validateTime().toString()+ "123")
+        //Log.i("test",validateOption().toString())
+//
+      //  if (!validateTime() || !validateOption()){
+         //  return
+      // }
+        //else
+        //    Log.i("test", validateOption().toString())
 
-        var getmin:String? = sharedPreferences.getString("STRING_KEY", null)
-        getmin = getmin?.takeLast(2)
-        var minnow = Calendar.getInstance().get(Calendar.MINUTE)
-        val optionOn:Boolean = sharedPreferences.getBoolean("Button_On", false)
-        val optionOff:Boolean = sharedPreferences.getBoolean("Button_Off", false)
-        var database = FirebaseDatabase.getInstance().reference
+            updateDBCurrentDate()
 
-        var getsec:Int? = (getmin!!.toInt() - minnow) * 60000
+            var getmin:String? = sharedPreferences.getString("STRING_KEY", null)
+            getmin = getmin?.takeLast(2)
+            var minnow = Calendar.getInstance().get(Calendar.MINUTE)
+            val optionOn:Boolean = sharedPreferences.getBoolean("Button_On", false)
+            val optionOff:Boolean = sharedPreferences.getBoolean("Button_Off", false)
+            var database = FirebaseDatabase.getInstance().reference
+
+            var getsec:Int? = (getmin!!.toInt() - minnow) * 60000
 
 
-        Timer().schedule(getsec!!.toLong()){
-            Looper.prepare()
-            if(optionOn == true && optionOff == false){
-                database.child("PI_01_CONTROL").child("led").setValue("1")
+            Timer().schedule(getsec!!.toLong()){
+                Looper.prepare()
+                if(optionOn == true && optionOff == false){
+                    database.child("PI_01_CONTROL").child("led").setValue("1")
 
-            }else {
-                Log.i("testing", "off")
-                database.child("PI_01_CONTROL").child("led").setValue("0")
+                }else {
+                    database.child("PI_01_CONTROL").child("led").setValue("0")
+
+                }
 
             }
 
-        }
     }
 
     private fun updateDBCurrentDate() {
-        if (!validateTime() || !validateOption()){
-            return
-        }
 
         var year:Int
         var month:Int
